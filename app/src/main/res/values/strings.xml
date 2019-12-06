@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">Simple Calorie Counter</string>
+    <string name="email">Email</string>
+    <string name="dob">Date of Birth</string>
+    <string name="gender">Gender</string>
+    <string name="height">Height</string>
+    <string name="activity_level">Activity Level</string>
+    <string name="weight">Weight</string>
+    <string name="target_weight">Target Weight</string>
+    <string name="measurement">Measurement</string>
+    <string name="metric">Metric</string>
+    <string name="imperial">Imperial</string>
+
+    <string name="day">Day</string>
+    <string name="month">Month</string>
+    <string name="year">Year</string>
+    <string name="january">January</string>
+    <string name="february">February</string>
+    <string name="march">March</string>
+    <string name="april">April</string>
+    <string name="may">May</string>
+    <string name="june">June</string>
+    <string name="july">July</string>
+    <string name="august">August</string>
+    <string name="september">September</string>
+    <string name="october">October</string>
+    <string name="november">November</string>
+    <string name="december">December</string>
+    <string name="blank"></string>
+
+
 </resources>
