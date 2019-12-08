@@ -60,19 +60,19 @@
                     android:layout_height="match_parent">
 
                     <Spinner
-                        android:id="@+id/spinner5"
+                        android:id="@+id/spinnerDOBDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
                     <Spinner
                         android:id="@+id/spinnerDOBMonth"
-                        android:layout_width="125dp"
+                        android:layout_width="110dp"
                         android:layout_height="match_parent"
                         android:entries="@array/months" />
 
                     <Spinner
-                        android:id="@+id/spinner6"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/spinnerDOBYear"
+                        android:layout_width="105dp"
                         android:layout_height="wrap_content" />
 
                 </TableRow>
@@ -85,7 +85,7 @@
 
                 <TextView
                     android:id="@+id/textViewx"
-                    android:layout_width="wrap_content"
+                    android:layout_width="88dp"
                     android:layout_height="wrap_content"
                     android:text="@string/blank" />
 
@@ -95,15 +95,15 @@
 
                     <TextView
                         android:id="@+id/textView3"
-                        android:layout_width="50dp"
+                        android:layout_width="83dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="12dp"
                         android:paddingRight="12dp"
-                        android:text="@string/day" />
+                        android:text="@string/date" />
 
                     <TextView
                         android:id="@+id/textView5"
-                        android:layout_width="123dp"
+                        android:layout_width="119dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="14dp"
                         android:paddingRight="14dp"
@@ -111,7 +111,7 @@
 
                     <TextView
                         android:id="@+id/textView6"
-                        android:layout_width="wrap_content"
+                        android:layout_width="77dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
@@ -193,14 +193,14 @@
                     android:layout_height="match_parent">
 
                     <EditText
-                        android:id="@+id/editText"
+                        android:id="@+id/editTextHeight"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ems="3"
                         android:inputType="numberSigned" />
 
                     <EditText
-                        android:id="@+id/editText2"
+                        android:id="@+id/editTextHeightInches"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ems="3"
@@ -233,7 +233,7 @@
                     android:layout_height="match_parent">
 
                     <EditText
-                        android:id="@+id/editText3"
+                        android:id="@+id/editTextWeight"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ems="3"
@@ -259,7 +259,7 @@
                     android:text="@string/activity_level" />
 
                 <Spinner
-                    android:id="@+id/spinner2"
+                    android:id="@+id/spinnerActivityLevel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:entries="@array/activity_level" />
