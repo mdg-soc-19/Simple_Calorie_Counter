@@ -12,13 +12,13 @@
     <string name="sign_up">Sign Up</string>
     <string name="i_want_to">I want to</string>
 
-    <string name="measurement">Measurement</string>
+    <string name="mesurment">Measurement</string>
     <string name="cm">cm</string>
     <string name="feet_inches">feet and inches</string>
     <string name="kg">kg</string>
     <string name="pound">pound</string>
 
-    <string-array name="measurements">
+    <string-array name="mesurments">
         <item>Metric</item>
         <item>Imperial</item>
     </string-array>

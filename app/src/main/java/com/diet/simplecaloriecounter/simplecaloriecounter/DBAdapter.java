@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.widget.Toast;
@@ -12,7 +13,7 @@ import android.widget.Toast;
 public class DBAdapter {
 
     private static final String databaseName = "simplecaloriecounter";
-    private static final int databaseVersion = 13;
+    private static final int databaseVersion = 34;
 
     private final Context context;
     private DatabaseHelper DBHelper;
@@ -37,17 +38,18 @@ public class DBAdapter {
                 db.execSQL("CREATE TABLE IF NOT EXISTS users (" +
                         "user_id INTEGER PRIMARY KEY AUTOINCREMENT," +
                         "user_email VARCHAR," +
-                        "user_password ,VARCHAR" +
+                        "user_password VARCHAR," +
                         "user_salt VARCHAR," +
                         "user_alias VARCHAR," +
                         "user_dob DATE," +
-                        "user_gender INT," + // INT ???
+                        "user_gender INT," +
                         "user_location VARCHAR," +
-                        "user_height INT," +
-                        "user_activivty_level INT," +
-                        "user_weight INT," +
-                        "user_target_weight INT," +
-                        "user_target_weight_level INT," +
+                        "user_height DOUBLE," +
+                        "user_activity_level INT," +
+                        "user_weight DOUBLE," +
+                        "user_target_weight DOUBLE," +
+                        "user_target_weight_level DOUBLE," +
+                        "user_mesurment VARCHAR," +
                         "user_last_seen TIME," +
                         "user_note VARCHAR);");
 
@@ -121,6 +123,7 @@ public class DBAdapter {
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+            db.execSQL("DROP TABLE IF EXISTS users");
             db.execSQL("DROP TABLE IF EXISTS food_diary_cal_eaten");
             db.execSQL("DROP TABLE IF EXISTS food_diary");
             db.execSQL("DROP TABLE IF EXISTS categories");
@@ -145,16 +148,59 @@ public class DBAdapter {
         DBHelper.close();
     }
 
+    public String quoteSmart(String value){
+        boolean isNumeric = false;
+        try {
+            double myDouble = Double.parseDouble(value);
+            isNumeric = true;
+        }
+        catch(NumberFormatException nfe) {
+            System.out.println("Could not parse " + nfe);
+        }
+        if(isNumeric == false){
+            if (value != null && value.length() > 0) {
+                value = value.replace("\\", "\\\\");
+                value = value.replace("'", "\\'");
+                value = value.replace("\0", "\\0");
+                value = value.replace("\n", "\\n");
+                value = value.replace("\r", "\\r");
+                value = value.replace("\"", "\\\"");
+                value = value.replace("\\x1a", "\\Z");
+            }
+        }
+
+        value = "'" + value + "'";
+
+        return value;
+    }
+    public double quoteSmart(double value) {
+        return value;
+    }
+
+    public int quoteSmart(int value) {
+        return value;
+    }
+
     public void insert(String table, String fields, String values) {
-        db.execSQL("INSERT INTO " + table + "(" + fields + ") VALUES (" + values + ")");
+
+        try{
+            db.execSQL("INSERT INTO " + table + "(" + fields + ") VALUES (" + values + ")");
+        }catch (SQLiteException e){
+            System.out.println("Insert Error" +e.toString());
+        }
     }
 
     public int count(String table)
     {
-        Cursor mCount = db.rawQuery("SELECT COUNT(*) FROM " + table + "",null);
-        mCount.moveToFirst();
-        int count = mCount.getInt(0);
-        mCount.close();
-        return count;
+        try{
+            Cursor mCount = db.rawQuery("SELECT COUNT(*) FROM " + table + "",null);
+            mCount.moveToFirst();
+            int count = mCount.getInt(0);
+            mCount.close();
+            return count;
+        }catch (SQLiteException e){
+            return -1;
+        }
+
     }
 }
