@@ -1,7 +1,6 @@
 package com.diet.simplecaloriecounter.simplecaloriecounter;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -32,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
 
         if(numberRows < 1) {
 
-            Toast.makeText(this, "Loading Setup...", Toast.LENGTH_LONG).show();
             DBSetupInsert setupInsert = new DBSetupInsert(this);
             setupInsert.insertAllCategories();
             setupInsert.insertAllFood();
@@ -50,6 +48,6 @@ public class MainActivity extends AppCompatActivity {
 
         db.close();
 
-        //Toast.makeText(this, "Database Works, food created!", Toast.LENGTH_SHORT).show();
+
     }
 }
