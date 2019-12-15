@@ -22,10 +22,8 @@ import java.util.Calendar;
 
 public class SignUp extends AppCompatActivity {
 
-    /* Variables */
     private String[] arraySpinnerDOBDay = new String[31];
     private String[] arraySpinnerDOBYear = new String[100];
-
 
 
     @Override
@@ -33,51 +31,46 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up);
 
-        /* Fill numbers for date of birth days */
         int human_counter = 0;
         for(int x=0;x<31;x++){
             human_counter=x+1;
             this.arraySpinnerDOBDay[x] = "" + human_counter;
         }
-        Spinner spinnerDOBDay = (Spinner) findViewById(R.id.spinnerDOBDate);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+        Spinner spinnerDOBDay = findViewById(R.id.spinnerDOBDate);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, arraySpinnerDOBDay);
         spinnerDOBDay.setAdapter(adapter);
 
-        /* Fill numbers for date of birth year */
-        // get current year、month and day
+
         int year = Calendar.getInstance().get(Calendar.YEAR);
         int end = year-100;
         int index = 0;
         for(int x=year;x>end;x--){
             this.arraySpinnerDOBYear[index] = "" + x;
-            // Toast.makeText(this, "x = " + x, Toast.LENGTH_SHORT).show();
-
             index++;
         }
 
-        Spinner spinnerDOBYear = (Spinner) findViewById(R.id.spinnerDOBYear);
-        ArrayAdapter<String> adapterYear = new ArrayAdapter<String>(this,
+        Spinner spinnerDOBYear = findViewById(R.id.spinnerDOBYear);
+        ArrayAdapter<String> adapterYear = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, arraySpinnerDOBYear);
         spinnerDOBYear.setAdapter(adapterYear);
 
 
 
 
-        /* Hide error icon and message */
-        ImageView imageViewError = (ImageView)findViewById(R.id.imageViewError);
+        ImageView imageViewError = findViewById(R.id.imageViewError);
         imageViewError.setVisibility(View.GONE);
 
-        TextView textViewErrorMessage = (TextView)findViewById(R.id.textViewErrorMessage);
+        TextView textViewErrorMessage = findViewById(R.id.textViewErrorMessage);
         textViewErrorMessage.setVisibility(View.GONE);
 
-        /* Hide icnhes field */
-        EditText editTextHeightInches = (EditText)findViewById(R.id.editTextHeightInches);
+
+        EditText editTextHeightInches = findViewById(R.id.editTextHeightInches);
         editTextHeightInches.setVisibility(View.GONE);
 
 
-        /* Listener Mesurment spinner */
-        Spinner spinnerMesurment = (Spinner)findViewById(R.id.spinnerMesurment);
+
+        Spinner spinnerMesurment = findViewById(R.id.spinnerMesurment);
         spinnerMesurment.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
@@ -85,7 +78,7 @@ public class SignUp extends AppCompatActivity {
             }
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                // mesurmentChanged();
+
             }
         });
 
@@ -93,8 +86,8 @@ public class SignUp extends AppCompatActivity {
 
 
 
-        /* Listener buttonSignUp */
-        Button buttonSignUp = (Button)findViewById(R.id.buttonSignUp);
+
+        Button buttonSignUp = findViewById(R.id.buttonSignUp);
         buttonSignUp.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -103,18 +96,18 @@ public class SignUp extends AppCompatActivity {
         });
 
 
-    } // protected void onCreate
+    }
 
-    /*- Mesurment changed ------------------------------------------ */
+
     public void mesurmentChanged() {
 
-        // Mesurment spinner
-        Spinner spinnerMesurment = (Spinner)findViewById(R.id.spinnerMesurment);
+
+        Spinner spinnerMesurment = findViewById(R.id.spinnerMesurment);
         String stringMesurment = spinnerMesurment.getSelectedItem().toString();
 
 
-        EditText editTextHeightCm = (EditText)findViewById(R.id.editTextHeightCm);
-        EditText editTextHeightInches = (EditText)findViewById(R.id.editTextHeightInches);
+        EditText editTextHeightCm = findViewById(R.id.editTextHeightCm);
+        EditText editTextHeightInches = findViewById(R.id.editTextHeightInches);
         String stringHeightCm = editTextHeightCm.getText().toString();
         String stringHeightInches = editTextHeightInches.getText().toString();
 
@@ -122,16 +115,16 @@ public class SignUp extends AppCompatActivity {
         double heightFeet = 0;
         double heightInches = 0;
 
-        TextView textViewCm = (TextView)findViewById(R.id.textViewCm);
-        TextView textViewKg = (TextView)findViewById(R.id.textViewKg);
+        TextView textViewCm = findViewById(R.id.textViewCm);
+        TextView textViewKg = findViewById(R.id.textViewKg);
 
         if(stringMesurment.startsWith("I")){
-            // Imperial
+
             editTextHeightInches.setVisibility(View.VISIBLE);
             textViewCm.setText("feet and inches");
             textViewKg.setText("pound");
 
-            // Find feet
+
             try {
                 heightCm = Double.parseDouble(stringHeightCm);
             }
@@ -139,26 +132,20 @@ public class SignUp extends AppCompatActivity {
 
             }
             if(heightCm != 0){
-                // Convert CM into feet
-                // feet = cm * 0.3937008)/12
-                heightFeet = (heightCm * 0.3937008)/12;
-                // heightFeet = Math.round(heightFeet);
-                int intHeightFeet = (int) heightFeet;
 
+                heightFeet = (heightCm * 0.3937008)/12;
+                int intHeightFeet = (int) heightFeet;
                 editTextHeightCm.setText("" + intHeightFeet);
 
             }
 
-        } // if(stringMesurment.startsWith("I")){
+        }
         else{
-            // Metric
+
             editTextHeightInches.setVisibility(View.GONE);
             textViewCm.setText("cm");
             textViewKg.setText("kg");
 
-            // Change feet and inches to cm
-
-            // Convert Feet
             try {
                 heightFeet = Double.parseDouble(stringHeightCm);
             }
@@ -166,7 +153,6 @@ public class SignUp extends AppCompatActivity {
 
             }
 
-            // Convert inches
             try {
                 heightInches = Double.parseDouble(stringHeightInches);
             }
@@ -174,8 +160,6 @@ public class SignUp extends AppCompatActivity {
 
             }
 
-            // Need to convert, we want to save the number in cm
-            // cm = ((foot * 12) + inches) * 2.54
             if(heightFeet != 0 && heightInches != 0) {
                 heightCm = ((heightFeet * 12) + heightInches) * 2.54;
                 heightCm = Math.round(heightCm);
@@ -186,7 +170,7 @@ public class SignUp extends AppCompatActivity {
 
 
         // Weight
-        EditText editTextWeight = (EditText)findViewById(R.id.editTextWeight);
+        EditText editTextWeight = findViewById(R.id.editTextWeight);
         String stringWeight = editTextWeight.getText().toString();
         double doubleWeight = 0;
 
@@ -199,34 +183,34 @@ public class SignUp extends AppCompatActivity {
         if(doubleWeight != 0) {
 
             if (stringMesurment.startsWith("I")) {
-                // kg to punds
+
                 doubleWeight = Math.round(doubleWeight / 0.45359237);
             } else {
-                // pounds to kg
+
                 doubleWeight = Math.round(doubleWeight * 0.45359237);
             }
             editTextWeight.setText("" + doubleWeight);
         }
 
-    } // public voild messuredChanged
+    }
 
-    /*- Sign up Submit ---------------------------------------------- */
+
     public void signUpSubmit() {
         // Error
-        ImageView imageViewError = (ImageView)findViewById(R.id.imageViewError);
-        TextView textViewErrorMessage = (TextView)findViewById(R.id.textViewErrorMessage);
+        ImageView imageViewError = findViewById(R.id.imageViewError);
+        TextView textViewErrorMessage = findViewById(R.id.textViewErrorMessage);
         String errorMessage = "";
 
         // Email
-        TextView textViewEmail = (TextView)findViewById(R.id.textViewEmail);
-        EditText editTextEmail = (EditText)findViewById(R.id.editTextEmail);
+        TextView textViewEmail = findViewById(R.id.textViewEmail);
+        EditText editTextEmail = findViewById(R.id.editTextEmail);
         String stringEmail = editTextEmail.getText().toString();
         if(stringEmail.isEmpty() || stringEmail.startsWith(" ")){
             errorMessage = "Please fill inn an e-mail address.";
         }
 
         // Date of Birth Day
-        Spinner spinnerDOBDay = (Spinner)findViewById(R.id.spinnerDOBDate);
+        Spinner spinnerDOBDay = findViewById(R.id.spinnerDOBDate);
         String stringDOBDay = spinnerDOBDay.getSelectedItem().toString();
         int intDOBDay = 0;
         try {
@@ -243,7 +227,7 @@ public class SignUp extends AppCompatActivity {
         }
 
         // Date of Birth Month
-        Spinner spinnerDOBMonth = (Spinner)findViewById(R.id.spinnerDOBMonth);
+        Spinner spinnerDOBMonth = findViewById(R.id.spinnerDOBMonth);
         String stringDOBMonth = spinnerDOBMonth.getSelectedItem().toString();
         if(stringDOBMonth.startsWith("Jan")){
             stringDOBMonth = "01";
@@ -284,7 +268,7 @@ public class SignUp extends AppCompatActivity {
 
 
         // Date of Birth Year
-        Spinner spinnerDOBYear = (Spinner)findViewById(R.id.spinnerDOBYear);
+        Spinner spinnerDOBYear = findViewById(R.id.spinnerDOBYear);
         String stringDOBYear = spinnerDOBYear.getSelectedItem().toString();
         int intDOBYear = 0;
         try {
@@ -295,15 +279,15 @@ public class SignUp extends AppCompatActivity {
             errorMessage = "Please select a year for your birthday.";
         }
 
-        // Put date of birth togheter
+
         String dateOfBirth = intDOBYear + "-" + stringDOBMonth + "-" + stringDOBDay;
 
 
         // Gender
-        RadioGroup radioGroupGender = (RadioGroup)findViewById(R.id.radioGroupGender);
-        int radioButtonID = radioGroupGender.getCheckedRadioButtonId(); // get selected radio button from radioGroup
+        RadioGroup radioGroupGender = findViewById(R.id.radioGroupGender);
+        int radioButtonID = radioGroupGender.getCheckedRadioButtonId();
         View radioButtonGender = radioGroupGender.findViewById(radioButtonID);
-        int position = radioGroupGender.indexOfChild(radioButtonGender); // If you want position of Radiobutton
+        int position = radioGroupGender.indexOfChild(radioButtonGender);
 
         String stringGender = "";
         if(position == 0){
@@ -313,12 +297,9 @@ public class SignUp extends AppCompatActivity {
             stringGender = "female";
         }
 
-
-
-
         /* Height */
-        EditText editTextHeightCm = (EditText)findViewById(R.id.editTextHeightCm);
-        EditText editTextHeightInches = (EditText)findViewById(R.id.editTextHeightInches);
+        EditText editTextHeightCm = findViewById(R.id.editTextHeightCm);
+        EditText editTextHeightInches = findViewById(R.id.editTextHeightInches);
         String stringHeightCm = editTextHeightCm.getText().toString();
         String stringHeightInches = editTextHeightInches.getText().toString();
 
@@ -327,8 +308,8 @@ public class SignUp extends AppCompatActivity {
         double heightInches = 0;
         boolean metric = true;
 
-        // Metric or imperial?
-        Spinner spinnerMesurment = (Spinner)findViewById(R.id.spinnerMesurment);
+
+        Spinner spinnerMesurment = findViewById(R.id.spinnerMesurment);
         String stringMesurment = spinnerMesurment.getSelectedItem().toString();
 
         int intMesurment = spinnerMesurment.getSelectedItemPosition();
@@ -342,7 +323,7 @@ public class SignUp extends AppCompatActivity {
 
         if(metric == true) {
 
-            // Convert CM
+
             try {
                 heightCm = Double.parseDouble(stringHeightCm);
                 heightCm = Math.round(heightCm);
@@ -353,7 +334,7 @@ public class SignUp extends AppCompatActivity {
         }
         else {
 
-            // Convert Feet
+
             try {
                 heightFeet = Double.parseDouble(stringHeightCm);
             }
@@ -361,7 +342,7 @@ public class SignUp extends AppCompatActivity {
                 errorMessage = "Height (feet) has to be a number.";
             }
 
-            // Convert inches
+
             try {
                 heightInches = Double.parseDouble(stringHeightInches);
             }
@@ -369,14 +350,12 @@ public class SignUp extends AppCompatActivity {
                 errorMessage = "Height (inches) has to be a number.";
             }
 
-            // Need to convert, we want to save the number in cm
-            // cm = ((foot * 12) + inches) * 2.54
             heightCm = ((heightFeet * 12) + heightInches) * 2.54;
             heightCm = Math.round(heightCm);
         }
 
         // Weight
-        EditText editTextWeight = (EditText)findViewById(R.id.editTextWeight);
+        EditText editTextWeight = findViewById(R.id.editTextWeight);
         String stringWeight = editTextWeight.getText().toString();
         double doubleWeight = 0;
         try {
@@ -388,34 +367,28 @@ public class SignUp extends AppCompatActivity {
         if(metric == true) {
         }
         else{
-            // Imperial
-            // Pound to kg
             doubleWeight = Math.round(doubleWeight*0.45359237);
         }
 
 
-        // Activity level
-        Spinner spinnerActivityLevel = (Spinner)findViewById(R.id.spinnerActivityLevel);
-        //  0: Little to no exercise
-        // 1: Light exercise (1–3 days per week)
-        // 2: Moderate exercise (3–5 days per week)
-        // 3: Heavy exercise (6–7 days per week)
-        // 4: Very heavy exercise (twice per day, extra heavy workouts)
+
+        Spinner spinnerActivityLevel = findViewById(R.id.spinnerActivityLevel);
+
         int intActivityLevel = spinnerActivityLevel.getSelectedItemPosition();
 
-        // Error handling
+
         if(errorMessage.isEmpty()){
-            // Put data into database
+
             imageViewError.setVisibility(View.GONE);
             textViewErrorMessage.setVisibility(View.GONE);
 
 
-            // Insert into database
+
             DBAdapter db = new DBAdapter(this);
             db.open();
 
 
-            // Quote smart
+
             String stringEmailSQL = db.quoteSmart(stringEmail);
             String dateOfBirthSQL = db.quoteSmart(dateOfBirth);
             String stringGenderSQL = db.quoteSmart(stringGender);
@@ -448,7 +421,7 @@ public class SignUp extends AppCompatActivity {
             startActivity(i);
         }
         else {
-            // There is error
+
             textViewErrorMessage.setText(errorMessage);
             imageViewError.setVisibility(View.VISIBLE);
             textViewErrorMessage.setVisibility(View.VISIBLE);

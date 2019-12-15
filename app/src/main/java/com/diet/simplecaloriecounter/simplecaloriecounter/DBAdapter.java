@@ -13,7 +13,7 @@ import android.widget.Toast;
 public class DBAdapter {
 
     private static final String databaseName = "simplecaloriecounter";
-    private static final int databaseVersion = 37;
+    private static final int databaseVersion = 50;
 
     private final Context context;
     private DatabaseHelper DBHelper;
@@ -40,7 +40,10 @@ public class DBAdapter {
                         "goal_current_weight INT," +
                         "goal_target_weight INT," +
                         "goal_weekly_goal VARCHAR," +
-                        "goal_energy INT," +
+                        "goal_i_want_to VARCHAR," +
+                        "goal_energy_BMR INT," +
+                        "goal_energy_with_activity INT," +
+                        "goal_energy_with_activity_and_diet INT," +
                         "goal_proteins INT," +
                         "goal_carbs INT," +
                         "goal_fat INT," +
@@ -212,5 +215,38 @@ public class DBAdapter {
             return -1;
         }
 
+    }
+
+    public Cursor selectPrimaryKey(String table, String primaryKey, long rowId, String [] field) throws SQLException
+    {
+        Cursor mCursor = db.query(table, field,primaryKey + "=" + rowId, null, null, null, null, null);
+
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
+
+    //public void truncate(String table){
+        //db.execSQL("delete from "+ table);
+    //}
+
+    public boolean update(String table, String primaryKey, long rowId, String field, String value) throws SQLException{
+          value = value.substring(1, value.length() - 1);//removes ' after running quoteSmart
+          ContentValues args = new ContentValues();
+          args.put(field, value);
+          return db.update(table, args, primaryKey +"="+ rowId, null) > 0;
+    }
+
+    public boolean update(String table, String primaryKey, long rowId, String field, double value) throws SQLException{
+        ContentValues args = new ContentValues();
+        args.put(field, value);
+        return db.update(table, args, primaryKey +"="+ rowId, null) > 0;
+    }
+
+    public boolean update(String table, String primaryKey, long rowId, String field, int value) throws SQLException{
+        ContentValues args = new ContentValues();
+        args.put(field, value);
+        return db.update(table, args, primaryKey +"="+ rowId, null) > 0;
     }
 }
