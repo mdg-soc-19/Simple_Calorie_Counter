@@ -13,7 +13,7 @@ import android.widget.Toast;
 public class DBAdapter {
 
     private static final String databaseName = "simplecaloriecounter";
-    private static final int databaseVersion = 34;
+    private static final int databaseVersion = 37;
 
     private final Context context;
     private DatabaseHelper DBHelper;
@@ -35,6 +35,18 @@ public class DBAdapter {
         public void onCreate(SQLiteDatabase db) {
             try {
 
+                db.execSQL("CREATE TABLE IF NOT EXISTS goal (" +
+                        "goal_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        "goal_current_weight INT," +
+                        "goal_target_weight INT," +
+                        "goal_weekly_goal VARCHAR," +
+                        "goal_energy INT," +
+                        "goal_proteins INT," +
+                        "goal_carbs INT," +
+                        "goal_fat INT," +
+                        "goal_notes VARCHAR," +
+                        "goal_date DATE);");
+
                 db.execSQL("CREATE TABLE IF NOT EXISTS users (" +
                         "user_id INTEGER PRIMARY KEY AUTOINCREMENT," +
                         "user_email VARCHAR," +
@@ -46,9 +58,6 @@ public class DBAdapter {
                         "user_location VARCHAR," +
                         "user_height DOUBLE," +
                         "user_activity_level INT," +
-                        "user_weight DOUBLE," +
-                        "user_target_weight DOUBLE," +
-                        "user_target_weight_level DOUBLE," +
                         "user_mesurment VARCHAR," +
                         "user_last_seen TIME," +
                         "user_note VARCHAR);");
@@ -123,6 +132,7 @@ public class DBAdapter {
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+            db.execSQL("DROP TABLE IF EXISTS goal");
             db.execSQL("DROP TABLE IF EXISTS users");
             db.execSQL("DROP TABLE IF EXISTS food_diary_cal_eaten");
             db.execSQL("DROP TABLE IF EXISTS food_diary");

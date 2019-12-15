@@ -10,7 +10,22 @@
     <string name="weight">Weight</string>
     <string name="target_weight">Target Weight</string>
     <string name="sign_up">Sign Up</string>
-    <string name="i_want_to">I want to</string>
+    <string name="i_want_to">I Want To</string>
+    <string name="weekly_goal">Weekly goal</string>
+    <string name="kg_each_week">kg each week</string>
+    <string name="pound_each_week">pound each week</string>
+    <string-array name="i_want_to_array">
+        <item>Lose Weight</item>
+        <item>Gain Weight</item>
+    </string-array>
+    <string-array name="weekly_goal_array">
+        <item>0.5</item>
+        <item>1.0</item>
+        <item>1.5</item>
+        <item>2.0</item>
+        <item>2.5</item>
+        <item>3.0</item>
+    </string-array>
 
     <string name="mesurment">Measurement</string>
     <string name="cm">cm</string>

@@ -16,10 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignUp">
+        <activity android:name=".SignUp"></activity>
+        <activity android:name=".EditProfileGoal"></activity>
+        <activity android:name=".SignUpGoal"></activity>
 
 
-        </activity>
     </application>
 
 </manifest>

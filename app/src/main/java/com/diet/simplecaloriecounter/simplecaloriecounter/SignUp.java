@@ -2,9 +2,7 @@ package com.diet.simplecaloriecounter.simplecaloriecounter;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.icu.text.DateFormat;
-import android.icu.text.SimpleDateFormat;
-import android.icu.util.Calendar;
+
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Calendar;
 
 
 public class SignUp extends AppCompatActivity {
@@ -33,7 +33,6 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up);
 
-
         /* Fill numbers for date of birth days */
         int human_counter = 0;
         for(int x=0;x<31;x++){
@@ -47,8 +46,7 @@ public class SignUp extends AppCompatActivity {
 
         /* Fill numbers for date of birth year */
         // get current year、month and day
-        Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
+        int year = Calendar.getInstance().get(Calendar.YEAR);
         int end = year-100;
         int index = 0;
         for(int x=year;x>end;x--){
@@ -426,13 +424,27 @@ public class SignUp extends AppCompatActivity {
             double doubleWeightSQL = db.quoteSmart(doubleWeight);
             String stringMesurmentSQL = db.quoteSmart(stringMesurment);
 
-            String stringInput = "NULL, " + stringEmailSQL + "," + dateOfBirthSQL + "," + stringGenderSQL + "," + heightCmSQL + "," + intActivityLevelSQL + "," + doubleWeightSQL + "," + stringMesurmentSQL;
+            String stringInput = "NULL, " + stringEmailSQL + "," + dateOfBirthSQL + "," + stringGenderSQL + "," + heightCmSQL + "," + intActivityLevelSQL + "," + stringMesurmentSQL;
 
-            db.insert("users", "user_id,user_email,user_dob,user_gender,user_height,user_activity_level,user_weight,user_mesurment",stringInput);
+            db.insert("users", "user_id,user_email,user_dob,user_gender,user_height,user_activity_level,user_mesurment",stringInput);
+
+            int year = Calendar.getInstance().get(Calendar.YEAR);
+            int month = Calendar.getInstance().get(Calendar.MONTH);
+            ++month;
+            int date = Calendar.getInstance().get(Calendar.DATE);
+
+            String goal_date = year + "-" + month + "-" + date;
+            String goal_dateSQL = db.quoteSmart(goal_date);
+
+
+            stringInput = "NULL, " + doubleWeightSQL + "," + goal_dateSQL;
+
+            db.insert("goal", "goal_id,goal_current_weight,goal_date",stringInput);
+
 
             db.close();
 
-            Intent i = new Intent(SignUp.this, MainActivity.class);
+            Intent i = new Intent(SignUp.this, SignUpGoal.class);
             startActivity(i);
         }
         else {
