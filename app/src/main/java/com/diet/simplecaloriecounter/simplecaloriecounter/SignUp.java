@@ -133,9 +133,11 @@ public class SignUp extends AppCompatActivity {
             }
             if(heightCm != 0){
 
-                heightFeet = (heightCm * 0.3937008)/12;
-                int intHeightFeet = (int) heightFeet;
-                editTextHeightCm.setText("" + intHeightFeet);
+                heightFeet = heightCm/30.48;
+                heightInches = (heightFeet - (int)heightFeet)*12;
+
+                editTextHeightCm.setText("" + (int)heightFeet);
+                editTextHeightInches.setText("" + (int)heightInches);
 
             }
 
@@ -162,7 +164,6 @@ public class SignUp extends AppCompatActivity {
 
             if(heightFeet != 0 && heightInches != 0) {
                 heightCm = ((heightFeet * 12) + heightInches) * 2.54;
-                heightCm = Math.round(heightCm);
                 editTextHeightCm.setText("" + heightCm);
             }
         }
