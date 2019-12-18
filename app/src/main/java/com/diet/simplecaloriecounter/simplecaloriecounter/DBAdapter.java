@@ -41,12 +41,22 @@ public class DBAdapter {
                         "goal_target_weight INT," +
                         "goal_weekly_goal VARCHAR," +
                         "goal_i_want_to VARCHAR," +
-                        "goal_energy_BMR INT," +
-                        "goal_energy_with_activity INT," +
-                        "goal_energy_with_activity_and_diet INT," +
-                        "goal_proteins INT," +
-                        "goal_carbs INT," +
-                        "goal_fat INT," +
+                        "goal_energy_BMR INT," + // Energy BMR
+                        "goal_proteins_BMR INT," +
+                        "goal_carbs_BMR INT," +
+                        "goal_fat_BMR INT," +
+                        "goal_energy_with_activity INT," + // Energy with Activity
+                        "goal_proteins_with_activity INT," +
+                        "goal_carbs_with_activity INT," +
+                        "goal_fat_with_activity INT," +
+                        "goal_energy_with_diet INT," + // Energy with Diet
+                        "goal_proteins_with_diet INT," +
+                        "goal_carbs_with_diet INT," +
+                        "goal_fat_with_diet INT," +
+                        "goal_energy_with_activity_and_diet INT," + // Energy with Activity and Diet
+                        "goal_proteins_with_activity_and_diet INT," +
+                        "goal_carbs_with_activity_and_diet INT," +
+                        "goal_fat_with_activity_and_diet INT," +
                         "goal_notes VARCHAR," +
                         "goal_date DATE);");
 
