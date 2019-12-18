@@ -119,8 +119,48 @@ public class SignUpGoal extends AppCompatActivity {
 
             }
             BMR = Math.round(BMR);
+            ///////////////////////////////////////////// Energy BMR
             double energyBMRSQL = db.quoteSmart(BMR);
             db.update("goal", "goal_id", rowId, "goal_energy_BMR", energyBMRSQL);
+
+            double proteins1 = Math.round(energyBMRSQL*0.3);
+            double carbs1 = Math.round(energyBMRSQL*0.5);
+            double fats1 = Math.round(energyBMRSQL*0.2);
+
+            double proteinsSQL1 = db.quoteSmart(proteins1);
+            double carbsSQL1 = db.quoteSmart(carbs1);
+            double fatsSQL1 = db.quoteSmart(fats1);
+
+            db.update("goal", "goal_id", rowId, "goal_carbs_BMR", carbsSQL1);
+            db.update("goal", "goal_id", rowId, "goal_proteins_BMR", proteinsSQL1);
+            db.update("goal", "goal_id", rowId, "goal_fat_BMR", fatsSQL1);
+
+            ///////////////////////////////////////////// Energy with Diet
+
+            double doubleWeeklyGoal = Double.parseDouble(StringspinnerWeeklyGoal);
+            double KcalDividedBy7 = 1100*doubleWeeklyGoal;
+
+            double energyWithDiet = 0;
+            if(intspinneriWantTo == 0){
+                energyWithDiet = Math.round(BMR - KcalDividedBy7);
+            }else{
+                energyWithDiet = Math.round(BMR + KcalDividedBy7);
+            }
+            double energyWithDietSQL = db.quoteSmart(energyWithDiet);
+            db.update("goal", "goal_id", rowId, "goal_energy_with_diet", energyWithDietSQL);
+            double proteins2 = Math.round(energyWithDiet*0.3);
+            double carbs2 = Math.round(energyWithDiet*0.5);
+            double fats2 = Math.round(energyWithDiet*0.2);
+
+            double proteinsSQL2 = db.quoteSmart(proteins2);
+            double carbsSQL2 = db.quoteSmart(carbs2);
+            double fatsSQL2 = db.quoteSmart(fats2);
+
+            db.update("goal", "goal_id", rowId, "goal_carbs_with_diet", carbsSQL2);
+            db.update("goal", "goal_id", rowId, "goal_proteins_with_diet", proteinsSQL2);
+            db.update("goal", "goal_id", rowId, "goal_fat_with_diet", fatsSQL2);
+
+            ///////////////////////////////////////////// Energy with Activity
 
             if(stringUserActivityLevel.equals("0")){
                 BMR = (int)(BMR*1.2);
@@ -137,32 +177,42 @@ public class SignUpGoal extends AppCompatActivity {
             double energyWithActivitySQL = db.quoteSmart(BMR);
             db.update("goal", "goal_id", rowId, "goal_energy_with_activity", energyWithActivitySQL);
 
+            double proteins3 = Math.round(energyWithActivitySQL*0.3);
+            double carbs3 = Math.round(energyWithActivitySQL*0.5);
+            double fats3 = Math.round(energyWithActivitySQL*0.2);
 
-            double doubleWeeklyGoal = Double.parseDouble(StringspinnerWeeklyGoal);
-            double kcal = 7700*doubleWeeklyGoal;
+            double proteinsSQL3 = db.quoteSmart(proteins3);
+            double carbsSQL3 = db.quoteSmart(carbs3);
+            double fatsSQL3 = db.quoteSmart(fats3);
+
+            db.update("goal", "goal_id", rowId, "goal_carbs_with_activity", carbsSQL3);
+            db.update("goal", "goal_id", rowId, "goal_proteins_with_activity", proteinsSQL3);
+            db.update("goal", "goal_id", rowId, "goal_fat_with_activity", fatsSQL3);
+
+            ///////////////////////////////////////////// Energy with Activity and Diet
             double energyWithActivityAndDiet = 0;
             if(intspinneriWantTo == 0){
-                energyWithActivityAndDiet = Math.round(BMR - (kcal/7));
+                energyWithActivityAndDiet = Math.round(BMR - KcalDividedBy7);
             }else{
-                energyWithActivityAndDiet = Math.round(BMR + (kcal/7));
+                energyWithActivityAndDiet = Math.round(BMR + KcalDividedBy7);
             }
 
-            double energyWithActivityAndDietSQL= db.quoteSmart(energyWithActivityAndDiet);
+
+            double energyWithActivityAndDietSQL = db.quoteSmart(energyWithActivityAndDiet);
             db.update("goal", "goal_id", rowId, "goal_energy_with_activity_and_diet", energyWithActivityAndDietSQL);
 
-            double proteins = Math.round(energyWithActivityAndDiet*0.3);
-            double carbs = Math.round(energyWithActivityAndDiet*0.5);
-            double fats = Math.round(energyWithActivityAndDiet*0.2);
+            double proteins4 = Math.round(energyWithActivityAndDietSQL*0.3);
+            double carbs4 = Math.round(energyWithActivityAndDietSQL*0.5);
+            double fats4 = Math.round(energyWithActivityAndDietSQL*0.2);
 
-            double proteinsSQL = db.quoteSmart(proteins);
-            double carbsSQL = db.quoteSmart(carbs);
-            double fatsSQL = db.quoteSmart(fats);
+            double proteinsSQL4 = db.quoteSmart(proteins4);
+            double carbsSQL4 = db.quoteSmart(carbs4);
+            double fatsSQL4 = db.quoteSmart(fats4);
 
-            db.update("goal", "goal_id", rowId, "goal_carbs", carbsSQL);
-            db.update("goal", "goal_id", rowId, "goal_proteins", proteinsSQL);
-            db.update("goal", "goal_id", rowId, "goal_fat", fatsSQL );
+            db.update("goal", "goal_id", rowId, "goal_carbs_with_activity_and_diet", carbsSQL4);
+            db.update("goal", "goal_id", rowId, "goal_proteins_with_activity_and_diet", proteinsSQL4);
+            db.update("goal", "goal_id", rowId, "goal_fat_with_activity_and_diet", fatsSQL4 );
 
-            abc(energyBMRSQL , energyWithActivitySQL, energyWithActivityAndDietSQL, carbsSQL, fatsSQL, proteinsSQL);
             db.close();
 
             Intent i = new Intent(SignUpGoal.this, MainActivity.class);

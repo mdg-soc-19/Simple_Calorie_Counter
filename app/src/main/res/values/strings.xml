@@ -40,18 +40,18 @@
     <string name="year">Year</string>
 
     <string-array name="months">
-    <item>January</item>
-    <item>February</item>
-    <item>March</item>
-    <item>April</item>
-    <item>May</item>
-    <item>June</item>
-    <item>July</item>
-    <item>August</item>
-    <item>September</item>
-    <item>October</item>
-    <item>November</item>
-    <item>December</item>
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
     </string-array>
 
     <string-array name="activity_level">
@@ -88,6 +88,15 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="goal">Goal</string>
+    <string name="categories">Categories</string>
+    <string name="food">Food</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
