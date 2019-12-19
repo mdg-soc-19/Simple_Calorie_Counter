@@ -400,7 +400,7 @@ public class SignUp extends AppCompatActivity {
 
             String stringInput = "NULL, " + stringEmailSQL + "," + dateOfBirthSQL + "," + stringGenderSQL + "," + heightCmSQL + "," + intActivityLevelSQL + "," + stringMesurmentSQL;
 
-            db.insert("users", "user_id,user_email,user_dob,user_gender,user_height,user_activity_level,user_mesurment",stringInput);
+            db.insert("users", "_id,user_email,user_dob,user_gender,user_height,user_activity_level,user_mesurment",stringInput);
 
             int year = Calendar.getInstance().get(Calendar.YEAR);
             int month = Calendar.getInstance().get(Calendar.MONTH);
@@ -413,7 +413,7 @@ public class SignUp extends AppCompatActivity {
 
             stringInput = "NULL, " + doubleWeightSQL + "," + goal_dateSQL;
 
-            db.insert("goal", "goal_id,goal_current_weight,goal_date",stringInput);
+            db.insert("goal", "_id,goal_current_weight,goal_date",stringInput);
 
 
             db.close();
