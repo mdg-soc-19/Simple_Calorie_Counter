@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginLeft="24dp">
+
+
+        <TextView
+            android:id="@+id/textViewCategoriesDeleteMessage"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:paddingLeft="82dp"
+            android:paddingTop="30dp"
+            android:text="@string/are_you_sure_you_want_to_delete" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp" >
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="69dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/blank" />
+
+                <Button
+                    android:id="@+id/buttonCategoriesCancel"
+                    android:layout_width="112dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cancel" />
+
+                <Button
+                    android:id="@+id/buttonCategoriesConfirmDelete"
+                    android:layout_width="113dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/delete" />
+            </TableRow>
+
+        </TableLayout>
+
+    </LinearLayout>
+
+</ScrollView>

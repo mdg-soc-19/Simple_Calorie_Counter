@@ -13,7 +13,7 @@ import android.widget.Toast;
 public class DBAdapter {
 
     private static final String databaseName = "simplecaloriecounter";
-    private static final int databaseVersion = 52;
+    private static final int databaseVersion = 53;
 
     private final Context context;
     private DatabaseHelper DBHelper;
@@ -211,6 +211,10 @@ public class DBAdapter {
         return value;
     }
 
+    public long quoteSmart(long value) {
+        return value;
+    }
+
     public void insert(String table, String fields, String values) {
 
         try{
@@ -283,5 +287,9 @@ public class DBAdapter {
         ContentValues args = new ContentValues();
         args.put(field, value);
         return db.update(table, args, primaryKey +"="+ rowId, null) > 0;
+    }
+
+    public int delete(String table, String primaryKey, long rowID) throws SQLException {
+        return db.delete(table, primaryKey + "=" + rowID, null);
     }
 }
