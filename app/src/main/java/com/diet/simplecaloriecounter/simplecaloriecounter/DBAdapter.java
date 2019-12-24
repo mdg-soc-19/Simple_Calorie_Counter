@@ -13,7 +13,7 @@ import android.widget.Toast;
 public class DBAdapter {
 
     private static final String databaseName = "simplecaloriecounter";
-    private static final int databaseVersion = 37;
+    private static final int databaseVersion = 53;
 
     private final Context context;
     private DatabaseHelper DBHelper;
@@ -36,19 +36,34 @@ public class DBAdapter {
             try {
 
                 db.execSQL("CREATE TABLE IF NOT EXISTS goal (" +
-                        "goal_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        "goal_id INT," +
                         "goal_current_weight INT," +
                         "goal_target_weight INT," +
                         "goal_weekly_goal VARCHAR," +
-                        "goal_energy INT," +
-                        "goal_proteins INT," +
-                        "goal_carbs INT," +
-                        "goal_fat INT," +
+                        "goal_i_want_to VARCHAR," +
+                        "goal_energy_BMR INT," + // Energy BMR
+                        "goal_proteins_BMR INT," +
+                        "goal_carbs_BMR INT," +
+                        "goal_fat_BMR INT," +
+                        "goal_energy_with_activity INT," + // Energy with Activity
+                        "goal_proteins_with_activity INT," +
+                        "goal_carbs_with_activity INT," +
+                        "goal_fat_with_activity INT," +
+                        "goal_energy_with_diet INT," + // Energy with Diet
+                        "goal_proteins_with_diet INT," +
+                        "goal_carbs_with_diet INT," +
+                        "goal_fat_with_diet INT," +
+                        "goal_energy_with_activity_and_diet INT," + // Energy with Activity and Diet
+                        "goal_proteins_with_activity_and_diet INT," +
+                        "goal_carbs_with_activity_and_diet INT," +
+                        "goal_fat_with_activity_and_diet INT," +
                         "goal_notes VARCHAR," +
                         "goal_date DATE);");
 
                 db.execSQL("CREATE TABLE IF NOT EXISTS users (" +
-                        "user_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        "user_id INT," +
                         "user_email VARCHAR," +
                         "user_password VARCHAR," +
                         "user_salt VARCHAR," +
@@ -64,7 +79,8 @@ public class DBAdapter {
 
 
                 db.execSQL("CREATE TABLE IF NOT EXISTS food_diary_cal_eaten (" +
-                        "cal_eaten_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        "cal_eaten_id INT," +
                         "cal_eaten_date DATE," +
                         "cal_eaten_meal_no INT," +
                         "cal_eaten_energy INT," +
@@ -75,7 +91,8 @@ public class DBAdapter {
 
 
                 db.execSQL("CREATE TABLE IF NOT EXISTS food_diary (" +
-                        "fd_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        "fd_id INT," +
                         "fd_date DATE," +
                         "fd_meal_number INT," +
                         "fd_serving_size DOUBLE," +
@@ -90,7 +107,8 @@ public class DBAdapter {
 
 
                 db.execSQL("CREATE TABLE IF NOT EXISTS categories (" +
-                        "category_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        "category_id INT," +
                         "category_name VARCHAR," +
                         "category_parent_id INT," +
                         "category_icon VARCHAR," +
@@ -98,9 +116,11 @@ public class DBAdapter {
 
 
                 db.execSQL("CREATE TABLE IF NOT EXISTS food (" +
-                        "food_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        "food_id INT," +
                         "food_name VARCHAR," +
                         "food_manufactor_name VARCHAR," +
+                        "food_description VARCHAR," +
                         "food_serving_size DOUBLE," +
                         "food_serving_measurement VARCHAR," +
                         "food_serving_name_number DOUBLE," +
@@ -191,6 +211,10 @@ public class DBAdapter {
         return value;
     }
 
+    public long quoteSmart(long value) {
+        return value;
+    }
+
     public void insert(String table, String fields, String values) {
 
         try{
@@ -212,5 +236,60 @@ public class DBAdapter {
             return -1;
         }
 
+    }
+
+    public Cursor select(String table, String[] fields, String whereClause, String whereCondition, String orderBy, String OrderMethod) throws SQLException
+    {
+        Cursor mCursor = db.query(table, fields, whereClause + "=" + whereCondition, null, null, null, orderBy + " " + OrderMethod, null);
+
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
+
+
+    public Cursor select(String table, String[] fields, String whereClause, String whereCondition) throws SQLException
+    {
+        Cursor mCursor = db.query(table, fields, whereClause + "=" + whereCondition, null, null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
+
+
+    public Cursor selectPrimaryKey(String table, String primaryKey, long rowId, String [] field) throws SQLException
+    {
+        Cursor mCursor = db.query(table, field,primaryKey + "=" + rowId, null, null, null, null, null);
+
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
+
+
+    public boolean update(String table, String primaryKey, long rowId, String field, String value) throws SQLException{
+          value = value.substring(1, value.length() - 1);//removes ' after running quoteSmart
+          ContentValues args = new ContentValues();
+          args.put(field, value);
+          return db.update(table, args, primaryKey +"="+ rowId, null) > 0;
+    }
+
+    public boolean update(String table, String primaryKey, long rowId, String field, double value) throws SQLException{
+        ContentValues args = new ContentValues();
+        args.put(field, value);
+        return db.update(table, args, primaryKey +"="+ rowId, null) > 0;
+    }
+
+    public boolean update(String table, String primaryKey, long rowId, String field, int value) throws SQLException{
+        ContentValues args = new ContentValues();
+        args.put(field, value);
+        return db.update(table, args, primaryKey +"="+ rowId, null) > 0;
+    }
+
+    public int delete(String table, String primaryKey, long rowID) throws SQLException {
+        return db.delete(table, primaryKey + "=" + rowID, null);
     }
 }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.diet.simplecaloriecounter.simplecaloriecounter.HomeFragment"
+        android:label="@string/home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.diet.simplecaloriecounter.simplecaloriecounter.ProfileFragment"
+        android:label="@string/profile"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/nav_goal"
+        android:name="com.diet.simplecaloriecounter.simplecaloriecounter.GoalFragment"
+        android:label="@string/goal"
+        tools:layout="@layout/fragment_goal" />
+
+    <fragment
+        android:id="@+id/nav_categories"
+        android:name="com.diet.simplecaloriecounter.simplecaloriecounter.CategoriesFragment"
+        android:label="@string/categories"
+        tools:layout="@layout/fragment_categories" />
+
+    <fragment
+        android:id="@+id/nav_food"
+        android:name="com.diet.simplecaloriecounter.simplecaloriecounter.FoodFragment"
+        android:label="@string/food"
+        tools:layout="@layout/fragment_food" />
+
+</navigation>
