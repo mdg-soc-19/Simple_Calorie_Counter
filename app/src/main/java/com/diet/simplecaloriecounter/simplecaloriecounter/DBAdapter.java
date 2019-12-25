@@ -13,7 +13,7 @@ import android.widget.Toast;
 public class DBAdapter {
 
     private static final String databaseName = "simplecaloriecounter";
-    private static final int databaseVersion = 53;
+    private static final int databaseVersion = 56;
 
     private final Context context;
     private DatabaseHelper DBHelper;
@@ -42,6 +42,7 @@ public class DBAdapter {
                         "goal_target_weight INT," +
                         "goal_weekly_goal VARCHAR," +
                         "goal_i_want_to VARCHAR," +
+                        "goal_activity_level INT," +
                         "goal_energy_BMR INT," + // Energy BMR
                         "goal_proteins_BMR INT," +
                         "goal_carbs_BMR INT," +
@@ -122,17 +123,17 @@ public class DBAdapter {
                         "food_manufactor_name VARCHAR," +
                         "food_description VARCHAR," +
                         "food_serving_size DOUBLE," +
-                        "food_serving_measurement VARCHAR," +
+                        "food_serving_measurement VARCHAR," +  //////////measurement <--> mesurment
                         "food_serving_name_number DOUBLE," +
                         "food_serving_name_word VARCHAR," +
                         "food_energy DOUBLE," +
                         "food_proteins DOUBLE," +
                         "food_carbohydrates DOUBLE," +
-                        "food_fats DOUBLE," +
+                        "food_fats DOUBLE," +                  //////////fats <--> fat
                         "food_energy_calculated DOUBLE," +
                         "food_proteins_calculated DOUBLE," +
                         "food_carbohydrates_calculated DOUBLE," +
-                        "food_fats_calculated DOUBLE," +
+                        "food_fats_calculated DOUBLE," +       //////////fats <--> fat
                         "food_user_id INT," +
                         "food_barcode VARCHAR," +
                         "food_category_id INT," +
@@ -140,6 +141,7 @@ public class DBAdapter {
                         "food_image_a VARCHAR," +
                         "food_image_b VARCHAR," +
                         "food_image_c VARCHAR," +
+                        "food_last_used DATE," +
                         "food_note VARCHAR);");
 
             } catch (SQLException e) {
@@ -240,8 +242,13 @@ public class DBAdapter {
 
     public Cursor select(String table, String[] fields, String whereClause, String whereCondition, String orderBy, String OrderMethod) throws SQLException
     {
-        Cursor mCursor = db.query(table, fields, whereClause + "=" + whereCondition, null, null, null, orderBy + " " + OrderMethod, null);
-
+        Cursor mCursor;
+        if(whereClause.equals("")) {
+            mCursor = db.query(table, fields, null, null, null, null, orderBy + " " + OrderMethod, null);
+        }
+        else {
+            mCursor = db.query(table, fields, whereClause + "=" + whereCondition, null, null, null, orderBy + " " + OrderMethod, null);
+        }
         if (mCursor != null) {
             mCursor.moveToFirst();
         }
@@ -289,7 +296,21 @@ public class DBAdapter {
         return db.update(table, args, primaryKey +"="+ rowId, null) > 0;
     }
 
-    public int delete(String table, String primaryKey, long rowID) throws SQLException {
-        return db.delete(table, primaryKey + "=" + rowID, null);
+    public boolean update(String table, String primaryKey, long rowID, String[] fields, String[] values) {
+
+
+        ContentValues args = new ContentValues();
+        int arraySize = fields.length;
+        for (int x = 0; x < arraySize; x++) {
+
+            values[x] = values[x].substring(1, values[x].length() - 1);
+            args.put(fields[x], values[x]);
+        }
+
+        return db.update(table, args, primaryKey + "=" + rowID, null) > 0;
     }
+
+        public int delete(String table, String primaryKey, long rowID) throws SQLException {
+           return db.delete(table, primaryKey + "=" + rowID, null);
+        }
 }

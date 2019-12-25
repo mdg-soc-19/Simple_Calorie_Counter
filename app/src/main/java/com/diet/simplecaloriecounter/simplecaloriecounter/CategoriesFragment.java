@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -447,17 +448,14 @@ public class CategoriesFragment extends Fragment {
 
         categoriesCursor.moveToPosition(listItemIDClicked);
 
-        String id = categoriesCursor.getString(0);
-        String name = categoriesCursor.getString(1);
+        String currentId = categoriesCursor.getString(0);
+        String currentName = categoriesCursor.getString(1);
         String parentID = categoriesCursor.getString(2);
 
 
-        ((MainActivity)getActivity()).getSupportActionBar().setTitle(name);
+        ((MainActivity)getActivity()).getSupportActionBar().setTitle(currentName);
 
-        currentId = id;
-        currentName = name;
-
-        populateList(id,name);
+        populateList(currentId,currentName);
     }
 
 
@@ -490,12 +488,13 @@ public class CategoriesFragment extends Fragment {
         rootView.addView(mainView);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
+
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
     }
+
 
     @Override
     public void onAttach(Context context) {
@@ -514,18 +513,10 @@ public class CategoriesFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
+
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+
 }

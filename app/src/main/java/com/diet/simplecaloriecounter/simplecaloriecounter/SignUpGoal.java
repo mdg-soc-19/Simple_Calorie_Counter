@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CursorAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -100,7 +101,20 @@ public class SignUpGoal extends AppCompatActivity {
             String stringUserHeight = c.getString(3);
             String stringUserActivityLevel = c.getString(4);
 
+            String[] fieldsGoal = new String[]{
+                    "_id",
+                    "goal_current_weight"
+            };
+            Cursor cGoal = db.selectPrimaryKey("goal","_id", rowId, fieldsGoal);
+            String stringUserCurrentWeight = cGoal.getString(1);
 
+            double doubleUserCurrentWeight = 0;
+            try{
+                doubleUserCurrentWeight = Double.parseDouble(stringUserCurrentWeight);
+            }
+            catch(NumberFormatException nfe) {
+                System.out.println("Could not parse " + nfe);
+            }
             String[] items1 = stringUserDob.split("-");
             String stringUserAge;
 
@@ -112,10 +126,10 @@ public class SignUpGoal extends AppCompatActivity {
 
             double BMR = 0;
             if (stringUserGender.startsWith("m")) {
-                BMR = 88.362 + (13.397 * doubleTargetWeight) + (4.799 * Integer.parseInt(stringUserHeight)) - (5.677 * Integer.parseInt(stringUserAge));//different
+                BMR = 88.362 + (13.397 *doubleUserCurrentWeight ) + (4.799 * Integer.parseInt(stringUserHeight)) - (5.677 * Integer.parseInt(stringUserAge));//different
 
             } else {
-                BMR = 447.593 + (9.247 * doubleTargetWeight) + (3.098 * Integer.parseInt(stringUserHeight)) - (4.330 * Integer.parseInt(stringUserAge));//different
+                BMR = 447.593 + (9.247 *doubleUserCurrentWeight ) + (3.098 * Integer.parseInt(stringUserHeight)) - (4.330 * Integer.parseInt(stringUserAge));//different
 
             }
             BMR = Math.round(BMR);
@@ -274,13 +288,6 @@ public class SignUpGoal extends AppCompatActivity {
 
         return "" + age;
     }
-    public void abc(double a, double b, double c, double d, double e, double f){
-        Toast.makeText(this,"Basal Metabolic Rate in Cal/day = " + a + "\nGoal with Activity in Cal/day = " + b + "\nGoal with Activity and Diet in Cal/day = " + c + "\nCarbohydrates required in cal/day = " + d + "\nFats required in cal/day = " + e + "\nProteins required in cal/day = " + f,Toast.LENGTH_LONG).show();
 
-    }
-    public void abc(String a){
-        Toast.makeText(this,a,Toast.LENGTH_LONG).show();
-
-    }
 
 }

@@ -97,14 +97,54 @@
 
     <string name="add">Add</string>
     <string name="delete">Delete</string>
-    <string name="edit">Edit</string>
+
 
     <string name="name">Name</string>
     <string name="Parent">Parent</string>
 
     <string name="cancel">Cancel</string>
     <string name="are_you_sure_you_want_to_delete">Are you sure you want to Delete</string>
+    <string name="save">Save</string>
+    <string name="calories_table">Calories table</string>
+    <string name="energy">Energy</string>
+    <string name="proteins">Proteins</string>
+    <string name="carbs">Carbs</string>
+    <string name="fat">Fat</string>
+    <string name="per_hundred_gran">Per 100 gram OR 100 ml</string>
+    <string name="per_meal">Per Serve</string>
+    <string name="manufactor">Manufacturer</string>
+    <string name="about">About</string>
+    <string name="description">Description</string>
+    <string name="general">General</string>
+    <string name="serving">Serving</string>
+    <string name="number">Number</string>
+    <string name="word">Word</string>
+    <string name="barcode">Barcode</string>
+    <string name="category">Category</string>
+    <string name="main">Main</string>
+    <string name="sub">Sub</string>
+    <string name="current_status">Current status</string>
+    <string name="target">Target</string>
+    <string name="my_goal">My goal</string>
+    <string name="status">Status</string>
+    <string name="method">Method</string>
+    <string name="bmr">BMR</string>
+    <string name="numbers">Numbers</string>
+    <string name="diet">Diet</string>
+    <string name="with_activity">With activity</string>
+    <string name="with_activity_and_diet">With activity and diet</string>
 
+    <string name="if_you_want_to_keep_your_weight">If you want to keep your weight</string>
+    <string name="if_you_want_to_loose_weight">If you want to loose weight</string>
+    <string name="if_you_want_to">If you want to</string>
+    <string name="keep_your_weight">Keep your weight</string>
+    <string name="loose_x_kg_week_with_out_exercising">Loose x kg each week with out exercising</string>
+    <string name="without_activity">Without activity</string>
+    <string name="advanced">Advanced</string>
+    <string name="with_activity_">With activity</string>
+    <string name="edit">Edit</string>
 
-
+    <string name="password">Password</string>
+    <string name="alias">Alias</string>
+    <string name="activity">Activity</string>
 </resources>
