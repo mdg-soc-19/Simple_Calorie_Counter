@@ -156,9 +156,9 @@ public class SignUpGoal extends AppCompatActivity {
 
             double energyWithDiet = 0;
             if(intspinneriWantTo == 0){
-                energyWithDiet = Math.round(BMR - KcalDividedBy7);
+                energyWithDiet = Math.round((BMR - KcalDividedBy7) * 1.2);
             }else{
-                energyWithDiet = Math.round(BMR + KcalDividedBy7);
+                energyWithDiet = Math.round((BMR + KcalDividedBy7) * 1.2);
             }
             double energyWithDietSQL = db.quoteSmart(energyWithDiet);
             db.update("goal", "_id", rowId, "goal_energy_with_diet", energyWithDietSQL);
@@ -175,20 +175,20 @@ public class SignUpGoal extends AppCompatActivity {
             db.update("goal", "_id", rowId, "goal_fat_with_diet", fatsSQL2);
 
             ///////////////////////////////////////////// Energy with Activity
-
+            double energyWithActivity = 0;
             if(stringUserActivityLevel.equals("0")){
-                BMR = (int)(BMR*1.2);
+                energyWithActivity = BMR*1.2;
             }else if(stringUserActivityLevel.equals("1")){
-                BMR = (int)(BMR*1.375);
+                energyWithActivity = BMR*1.375;
             }else if(stringUserActivityLevel.equals("2")){
-                BMR = (int)(BMR*1.55);
+                energyWithActivity = BMR*1.55;
             }else if(stringUserActivityLevel.equals("3")){
-                BMR = (int)(BMR*1.725);
+                energyWithActivity = BMR*1.725;
             }else if(stringUserActivityLevel.equals("4")){
-                BMR = (int)(BMR*1.9);
+                energyWithActivity = BMR*1.9;
             }
-
-            double energyWithActivitySQL = db.quoteSmart(BMR);
+            energyWithActivity = Math.round(energyWithActivity);
+            double energyWithActivitySQL = db.quoteSmart(energyWithActivity);
             db.update("goal", "_id", rowId, "goal_energy_with_activity", energyWithActivitySQL);
 
             double proteins3 = Math.round(energyWithActivitySQL*0.3);
@@ -210,6 +210,22 @@ public class SignUpGoal extends AppCompatActivity {
             }else{
                 energyWithActivityAndDiet = Math.round(BMR + KcalDividedBy7);
             }
+            if(stringUserActivityLevel.equals("0")) {
+                energyWithActivityAndDiet= energyWithActivityAndDiet* 1.2;
+            }
+            else if(stringUserActivityLevel.equals("1")) {
+                energyWithActivityAndDiet= energyWithActivityAndDiet* 1.375;
+            }
+            else if(stringUserActivityLevel.equals("2")) {
+                energyWithActivityAndDiet= energyWithActivityAndDiet*1.55;
+            }
+            else if(stringUserActivityLevel.equals("3")) {
+                energyWithActivityAndDiet= energyWithActivityAndDiet*1.725;
+            }
+            else if(stringUserActivityLevel.equals("4")) {
+                energyWithActivityAndDiet = energyWithActivityAndDiet* 1.9;
+            }
+            energyWithActivityAndDiet = Math.round(energyWithActivityAndDiet);
 
 
             double energyWithActivityAndDietSQL = db.quoteSmart(energyWithActivityAndDiet);

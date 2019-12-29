@@ -147,4 +147,25 @@
     <string name="password">Password</string>
     <string name="alias">Alias</string>
     <string name="activity">Activity</string>
+    <string name="breakfast">Breakfast</string>
+    <string name="lunch">Lunch</string>
+    <string name="before_training">Before training</string>
+    <string name="after_training">After training</string>
+    <string name="dinner">Dinner</string>
+    <string name="snacks">Snacks</string>
+    <string name="supper">Supper</string>
+
+    <string name="portion_size">Portion size = </string>
+    <string name="pcs">Quantity/Spoon/Tablespoon/Cup</string>
+    <string name="gram">gram</string>
+    <string name="add_to_diary">Add to diary</string>
+    <string name="unlink">Unlink</string>
+
+    <string name="total_calories">Total Calories</string>
+    <string name="consumed">Consumed Calories</string>
+    <string name="remaining">Remaining Calories</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

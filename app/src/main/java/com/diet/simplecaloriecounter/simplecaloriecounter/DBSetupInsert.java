@@ -29,7 +29,7 @@ public class DBSetupInsert {
     }
 
     public void insertAllFood(){
-        setupInsertToFood("NULL, 'Apple', 'Farheen Fruits Company, Kolkata, West Bengal', '100', 'gram', '1', 'piece', '59', '56', '1.2', '1.8', '59', '56', '1.2', '1.8', NULL, NULL, '19', NULL, NULL, NULL, NULL, NULL");
+        setupInsertToFood("NULL, 'Apple', 'Farheen Fruits Company, Kolkata, West Bengal', '100', 'gram', '1', 'piece', '59', '56', '1.2', '1.8', '59', '56', '1.2', '1.8', NULL, NULL, '13', NULL, NULL, NULL, NULL, NULL");
     }
 
     public void insertAllCategories(){
@@ -87,13 +87,13 @@ public class DBSetupInsert {
         setupInsertToCategories("NULL, 'Cream cheese', '35', '', NULL");
 
 
-        setupInsertToCategories("NULL, 'On bread', '0', '', NULL");
+        setupInsertToCategories("NULL, 'On bread', '0', '', NULL");///////
         setupInsertToCategories("NULL, 'Cold meats', '37', '', NULL");
         setupInsertToCategories("NULL, 'Sweet spreads', '37', '', NULL");
         setupInsertToCategories("NULL, 'Jam', '37', '', NULL");
 
 
-        setupInsertToCategories("NULL, 'Snacks', '0', '', NULL");
+        setupInsertToCategories("NULL, 'Snacks', '0', '', NULL");/////////
         setupInsertToCategories("NULL, 'Nuts', '41', '', NULL");
         setupInsertToCategories("NULL, 'Potato chips', '41', '', NULL");
     }

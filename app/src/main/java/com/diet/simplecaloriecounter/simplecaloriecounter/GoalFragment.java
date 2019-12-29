@@ -594,7 +594,7 @@ public class GoalFragment extends Fragment {
            }
            else{
 
-               goalEnergyBMR = 447.593+(9.247*doubleCurrentWeight)+(3.098*doubleUserHeight)-(4.676*intUserAge);
+               goalEnergyBMR = 447.593+(9.247*doubleCurrentWeight)+(3.098*doubleUserHeight)-(4.330*intUserAge);
 
            }
            goalEnergyBMR = Math.round(goalEnergyBMR);
@@ -624,12 +624,12 @@ public class GoalFragment extends Fragment {
            double KcalDividedBy7 = 1100*doubleWeeklyGoal;
            if(intIWantTo == 0){
                // Loose weight
-               energyDiet = Math.round((goalEnergyBMR - KcalDividedBy7)) * 1.2;
+               energyDiet = Math.round((goalEnergyBMR - KcalDividedBy7) * 1.2);
 
            }
            else{
                // Gain weight
-               energyDiet = Math.round((goalEnergyBMR + KcalDividedBy7)) * 1.2;
+               energyDiet = Math.round((goalEnergyBMR + KcalDividedBy7) * 1.2);
            }
 
 
@@ -738,6 +738,7 @@ public class GoalFragment extends Fragment {
                    "'goal_carbs_with_activity_and_diet'," +
                    "'goal_fat_with_activity_and_diet'";
 
+
            String inpValues = "NULL, " +
                    stringCurrentWeightSQL + ", " +
                    stringTargetWeightSQL + ", " +
@@ -762,13 +763,14 @@ public class GoalFragment extends Fragment {
                    carbsWithActivityAndDietSQL + ", " +
                    fatWithActivityAndDietSQL;
 
-           //db.update("goal", "_id", rowID, inpFields, inpValues);//////////
+
            db.insert("goal",inpFields,inpValues);
            updateNumberTable();
 
            Toast.makeText(getActivity(), "Changes saved", Toast.LENGTH_SHORT).show();
 
            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+           fragmentManager.beginTransaction().replace(R.id.flContent, new GoalFragment(), GoalFragment.class.getName()).commit();
 
        }
 

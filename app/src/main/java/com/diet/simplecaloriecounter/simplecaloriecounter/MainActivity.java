@@ -37,11 +37,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
+        AddFoodToDiaryFragment.OnFragmentInteractionListener,
         CategoriesFragment.OnFragmentInteractionListener,
         FoodFragment.OnFragmentInteractionListener,
         GoalFragment.OnFragmentInteractionListener,
         HomeFragment.OnFragmentInteractionListener,
-        ProfileFragment.OnFragmentInteractionListener {
+        ProfileFragment.OnFragmentInteractionListener,
+        StatisticsFragment.OnFragmentInteractionListener {
 
 
     @Override
@@ -167,6 +169,8 @@ public class MainActivity extends AppCompatActivity
             fragmentClass = CategoriesFragment.class;
         } else if (id == R.id.nav_food) {
             fragmentClass = FoodFragment.class;
+        }else if(id == R.id.nav_statistics){
+            fragmentClass = StatisticsFragment.class;
         }
 
         // Try to add item to fragment

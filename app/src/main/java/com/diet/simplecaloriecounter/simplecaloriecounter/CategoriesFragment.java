@@ -38,8 +38,14 @@ public class CategoriesFragment extends Fragment {
     private Cursor categoriesCursor;
     private View mainView;
 
+    private Cursor listCursorCategory;
+    private Cursor listCursorFood;
+
     private MenuItem menuItemEdit;
     private MenuItem menuItemDelete;
+
+    private String currentFoodId;
+    private String currentFoodName;
 
     private String currentId;
     private String currentName;
@@ -456,22 +462,82 @@ public class CategoriesFragment extends Fragment {
         ((MainActivity)getActivity()).getSupportActionBar().setTitle(currentName);
 
         populateList(currentId,currentName);
+
+        showFoodInCategory(currentId, currentName, parentID);
     }
 
+    public void showFoodInCategory(String categoryId, String categoryName, String categoryParentID){
+        if(!(categoryParentID.equals("0"))) {
+
+            int id = R.layout.fragment_food;
+            setMainView(id);
+
+
+            DBAdapter db = new DBAdapter(getActivity());
+            db.open();
+
+
+            String[] fields = new String[] {
+                    "_id",
+                    "food_name",
+                    "food_manufactor_name",
+                    "food_description",
+                    "food_serving_size",
+                    "food_serving_measurement",
+                    "food_serving_name_number",
+                    "food_serving_name_word",
+                    "food_energy_calculated"
+            };
+            listCursorFood = db.select("food", fields, "food_category_id", categoryId, "food_name", "ASC");
+
+
+            ListView lvItemsFood = getActivity().findViewById(R.id.listViewFood);
+
+
+            FoodCursorAdapter adapter = new FoodCursorAdapter(getActivity(), listCursorFood);
+
+
+            lvItemsFood.setAdapter(adapter);
+
+
+            lvItemsFood.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                    foodListItemClicked(arg2);
+                }
+            });
+
+
+            db.close();
+
+        }
+    }
+
+    private void foodListItemClicked(int intFoodListItemIndex){
+
+        currentFoodId = listCursorFood.getString(0);
+        currentFoodName = listCursorFood.getString(1);
+
+        Fragment fragment = null;
+        Class fragmentClass = null;
+        fragmentClass = FoodFragment.class;
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        Bundle bundle = new Bundle();
+        bundle.putString("currentFoodId", ""+currentFoodId);
+        fragment.setArguments(bundle);
+
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

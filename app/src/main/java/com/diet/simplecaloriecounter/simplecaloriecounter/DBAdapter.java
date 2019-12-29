@@ -13,7 +13,7 @@ import android.widget.Toast;
 public class DBAdapter {
 
     private static final String databaseName = "simplecaloriecounter";
-    private static final int databaseVersion = 56;
+    private static final int databaseVersion = 58;
 
     private final Context context;
     private DatabaseHelper DBHelper;
@@ -81,13 +81,13 @@ public class DBAdapter {
 
                 db.execSQL("CREATE TABLE IF NOT EXISTS food_diary_cal_eaten (" +
                         "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        "cal_eaten_id INT," +
-                        "cal_eaten_date DATE," +
-                        "cal_eaten_meal_no INT," +
-                        "cal_eaten_energy INT," +
-                        "cal_eaten_proteins INT," +
-                        "cal_eaten_carbs INT," +
-                        "cal_eaten_fats INT);");
+                        " fdce_id INTEGER, " +
+                        " fdce_date DATE, " +
+                        " fdce_meal_no INT, " +
+                        " fdce_eaten_energy INT, " +
+                        " fdce_eaten_proteins INT, " +
+                        " fdce_eaten_carbs INT, " +
+                        " fdce_eaten_fat INT);");
 
 
 
@@ -96,8 +96,11 @@ public class DBAdapter {
                         "fd_id INT," +
                         "fd_date DATE," +
                         "fd_meal_number INT," +
-                        "fd_serving_size DOUBLE," +
-                        "fd_serving_measurement VARCHAR," +
+                        "fd_food_id INT," +
+                        "fd_serving_size_gram DOUBLE," +
+                        "fd_serving_size_gram_measurement VARCHAR," +
+                        "fd_serving_size_pcs DOUBLE," +
+                        "fd_serving_size_pcs_measurement VARCHAR," +
                         "fd_energy_calculated DOUBLE," +
                         "fd_proteins_calculated DOUBLE," +
                         "fd_carbohydrates_calculated DOUBLE," +
@@ -144,6 +147,15 @@ public class DBAdapter {
                         "food_last_used DATE," +
                         "food_note VARCHAR);");
 
+                db.execSQL("CREATE TABLE IF NOT EXISTS food_diary_sum (" +
+                        " _id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        " food_diary_sum_id INTEGER, " +
+                        " food_diary_sum_date DATE, " +
+                        " food_diary_sum_energy INT, " +
+                        " food_diary_sum_proteins INT, " +
+                        " food_diary_sum_carbs INT, " +
+                        " food_diary_sum_fat INT);");
+
             } catch (SQLException e) {
                 e.printStackTrace();
 
@@ -158,6 +170,7 @@ public class DBAdapter {
             db.execSQL("DROP TABLE IF EXISTS users");
             db.execSQL("DROP TABLE IF EXISTS food_diary_cal_eaten");
             db.execSQL("DROP TABLE IF EXISTS food_diary");
+            db.execSQL("DROP TABLE IF EXISTS food_diary_sum");
             db.execSQL("DROP TABLE IF EXISTS categories");
             db.execSQL("DROP TABLE IF EXISTS food");
             onCreate(db);
@@ -239,6 +252,39 @@ public class DBAdapter {
         }
 
     }
+
+
+    public Cursor select(String table, String[] fields) throws SQLException
+    {
+        Cursor mCursor = db.query(table, fields, null, null, null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
+
+
+    public Cursor select(String table, String[] fields, String[] whereClause, String[] whereCondition, String[] whereAndOr) throws SQLException
+    {
+        String where = "";
+        int arraySize = whereClause.length;
+        for(int x=0;x<arraySize;x++) {
+            if(where.equals("")) {
+                where = whereClause[x] + "=" + whereCondition[x];
+            }
+            else{
+                where = where + " " + whereAndOr[x-1] + " " + whereClause[x] + "=" + whereCondition[x];
+            }
+        }
+
+
+        Cursor mCursor = db.query(table, fields, where, null, null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
+
 
     public Cursor select(String table, String[] fields, String whereClause, String whereCondition, String orderBy, String OrderMethod) throws SQLException
     {
