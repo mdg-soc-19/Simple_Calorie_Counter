@@ -25,12 +25,11 @@ public class DBSetupInsert {
         db.open();
 
         db.insert("food" ,"food_id, food_name, food_manufactor_name, food_serving_size, food_serving_measurement, food_serving_name_number, food_serving_name_word, food_energy, food_proteins, food_carbohydrates, food_fats, food_energy_calculated, food_proteins_calculated, food_carbohydrates_calculated, food_fats_calculated, food_user_id, food_barcode, food_category_id, food_thumb, food_image_a, food_image_b, food_image_c, food_note", values);
-        db.close();
+        db.close();/// serving name word =  'teaspoon' or 'plate' or 'cup' or 'tablespoon'
     }
 
     public void insertAllFood(){
-        setupInsertToFood("NULL, 'Milk','AMUL',NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL");
-        setupInsertToFood("NULL, 'Egg, whole ,cooked, hard boiled ', 'AMUL', '136.0','g', '211.0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL");
+        setupInsertToFood("NULL, 'Apple', 'Farheen Fruits Company, Kolkata, West Bengal', '100', 'gram', '1', 'piece', '59', '56', '1.2', '1.8', '59', '56', '1.2', '1.8', NULL, NULL, '13', NULL, NULL, NULL, NULL, NULL");
     }
 
     public void insertAllCategories(){
@@ -88,13 +87,13 @@ public class DBSetupInsert {
         setupInsertToCategories("NULL, 'Cream cheese', '35', '', NULL");
 
 
-        setupInsertToCategories("NULL, 'On bread', '0', '', NULL");
+        setupInsertToCategories("NULL, 'On bread', '0', '', NULL");///////
         setupInsertToCategories("NULL, 'Cold meats', '37', '', NULL");
         setupInsertToCategories("NULL, 'Sweet spreads', '37', '', NULL");
         setupInsertToCategories("NULL, 'Jam', '37', '', NULL");
 
 
-        setupInsertToCategories("NULL, 'Snacks', '0', '', NULL");
+        setupInsertToCategories("NULL, 'Snacks', '0', '', NULL");/////////
         setupInsertToCategories("NULL, 'Nuts', '41', '', NULL");
         setupInsertToCategories("NULL, 'Potato chips', '41', '', NULL");
     }

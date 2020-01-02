@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -37,8 +38,14 @@ public class CategoriesFragment extends Fragment {
     private Cursor categoriesCursor;
     private View mainView;
 
+    private Cursor listCursorCategory;
+    private Cursor listCursorFood;
+
     private MenuItem menuItemEdit;
     private MenuItem menuItemDelete;
+
+    private String currentFoodId;
+    private String currentFoodName;
 
     private String currentId;
     private String currentName;
@@ -447,33 +454,90 @@ public class CategoriesFragment extends Fragment {
 
         categoriesCursor.moveToPosition(listItemIDClicked);
 
-        String id = categoriesCursor.getString(0);
-        String name = categoriesCursor.getString(1);
+        String currentId = categoriesCursor.getString(0);
+        String currentName = categoriesCursor.getString(1);
         String parentID = categoriesCursor.getString(2);
 
 
-        ((MainActivity)getActivity()).getSupportActionBar().setTitle(name);
+        ((MainActivity)getActivity()).getSupportActionBar().setTitle(currentName);
 
-        currentId = id;
-        currentName = name;
+        populateList(currentId,currentName);
 
-        populateList(id,name);
+        showFoodInCategory(currentId, currentName, parentID);
     }
 
+    public void showFoodInCategory(String categoryId, String categoryName, String categoryParentID){
+        if(!(categoryParentID.equals("0"))) {
+
+            int id = R.layout.fragment_food;
+            setMainView(id);
+
+
+            DBAdapter db = new DBAdapter(getActivity());
+            db.open();
+
+
+            String[] fields = new String[] {
+                    "_id",
+                    "food_name",
+                    "food_manufactor_name",
+                    "food_description",
+                    "food_serving_size",
+                    "food_serving_measurement",
+                    "food_serving_name_number",
+                    "food_serving_name_word",
+                    "food_energy_calculated"
+            };
+            listCursorFood = db.select("food", fields, "food_category_id", categoryId, "food_name", "ASC");
+
+
+            ListView lvItemsFood = getActivity().findViewById(R.id.listViewFood);
+
+
+            FoodCursorAdapter adapter = new FoodCursorAdapter(getActivity(), listCursorFood);
+
+
+            lvItemsFood.setAdapter(adapter);
+
+
+            lvItemsFood.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                    foodListItemClicked(arg2);
+                }
+            });
+
+
+            db.close();
+
+        }
+    }
+
+    private void foodListItemClicked(int intFoodListItemIndex){
+
+        currentFoodId = listCursorFood.getString(0);
+        currentFoodName = listCursorFood.getString(1);
+
+        Fragment fragment = null;
+        Class fragmentClass = null;
+        fragmentClass = FoodFragment.class;
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        Bundle bundle = new Bundle();
+        bundle.putString("currentFoodId", ""+currentFoodId);
+        fragment.setArguments(bundle);
+
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -490,12 +554,13 @@ public class CategoriesFragment extends Fragment {
         rootView.addView(mainView);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
+
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
     }
+
 
     @Override
     public void onAttach(Context context) {
@@ -514,18 +579,10 @@ public class CategoriesFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
+
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+
 }

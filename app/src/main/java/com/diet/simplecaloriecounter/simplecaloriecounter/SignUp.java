@@ -164,7 +164,7 @@ public class SignUp extends AppCompatActivity {
 
             if(heightFeet != 0 && heightInches != 0) {
                 heightCm = ((heightFeet * 12) + heightInches) * 2.54;
-                editTextHeightCm.setText("" + heightCm);
+                editTextHeightCm.setText("" + Math.round(heightCm));
             }
         }
 
@@ -411,9 +411,9 @@ public class SignUp extends AppCompatActivity {
             String goal_dateSQL = db.quoteSmart(goal_date);
 
 
-            stringInput = "NULL, " + doubleWeightSQL + "," + goal_dateSQL;
+            stringInput = "NULL, " + doubleWeightSQL + "," + goal_dateSQL + "," + intActivityLevelSQL;
 
-            db.insert("goal", "_id,goal_current_weight,goal_date",stringInput);
+            db.insert("goal", "_id,goal_current_weight,goal_date,goal_activity_level",stringInput);
 
 
             db.close();

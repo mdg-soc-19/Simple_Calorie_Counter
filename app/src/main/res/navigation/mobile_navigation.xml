@@ -35,4 +35,10 @@
         android:label="@string/food"
         tools:layout="@layout/fragment_food" />
 
+    <fragment
+        android:id="@+id/nav_statistics"
+        android:name="com.diet.simplecaloriecounter.simplecaloriecounter.StatisticsFragment"
+        android:label="Statistics"
+        tools:layout="@layout/fragment_statistics"/>
+
 </navigation>
