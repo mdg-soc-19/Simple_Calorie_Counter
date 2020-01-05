@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FoodFragment">
+    tools:context=".FoodFragment"
+    android:id="@+id/FragmentFood">
 
     <ScrollView
         android:layout_width="match_parent"

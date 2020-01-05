@@ -5,8 +5,11 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -26,7 +29,7 @@ import android.widget.Toast;
 import java.util.Calendar;
 
 
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment implements IOnBackPressed{
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -508,6 +511,18 @@ public class ProfileFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public boolean onBackPressed() {
+        ProfileFragment fragment = (ProfileFragment) getFragmentManager().findFragmentById(R.id.flContent);
+
+        getFragmentManager().beginTransaction()
+                .detach(fragment)
+                .attach(fragment)
+                .commit();
+
+        return true;
     }
 
     public interface OnFragmentInteractionListener {

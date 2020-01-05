@@ -1,6 +1,7 @@
 package com.diet.simplecaloriecounter.simplecaloriecounter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -28,11 +29,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 
-public class AddFoodToDiaryFragment extends Fragment {
+public class AddFoodToDiaryFragment extends Fragment implements IOnBackPressed{
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
 
     private String mParam1;
     private String mParam2;
@@ -701,6 +701,28 @@ public class AddFoodToDiaryFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public boolean onBackPressed() {
+        Fragment fragment = null;
+        Class fragmentClass = HomeFragment.class;
+
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        FragmentManager fragmentManager = getFragmentManager();
+        try {
+            fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return true;
     }
 
     public interface OnFragmentInteractionListener {

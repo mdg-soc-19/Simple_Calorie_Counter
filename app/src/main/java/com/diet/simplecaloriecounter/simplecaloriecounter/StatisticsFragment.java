@@ -6,8 +6,13 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
+
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -29,7 +34,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 
-public class StatisticsFragment extends Fragment {
+public class StatisticsFragment extends Fragment implements IOnBackPressed{
 
     private BarChart mChart;
 
@@ -270,8 +275,20 @@ public class StatisticsFragment extends Fragment {
         mListener = null;
     }
 
+    @Override
+    public boolean onBackPressed() {
+        StatisticsFragment fragment = (StatisticsFragment) getFragmentManager().findFragmentById(R.id.flContent);
+
+        getFragmentManager().beginTransaction()
+                .detach(fragment)
+                .attach(fragment)
+                .commit();
+
+        return true;
+    }
 
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
     }
+
 }
