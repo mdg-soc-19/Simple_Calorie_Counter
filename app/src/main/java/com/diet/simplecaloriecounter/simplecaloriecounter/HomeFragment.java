@@ -574,9 +574,9 @@ public class HomeFragment extends Fragment {
             intFdceEatenFat = intFdceEatenFat+intFdFatCalculated;
 
 
-
             cursorFd.moveToNext();
         }
+
 
 
         if(stringMealNumber.equals("0")) {

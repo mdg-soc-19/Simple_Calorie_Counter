@@ -81,13 +81,13 @@ public class DBAdapter {
 
                 db.execSQL("CREATE TABLE IF NOT EXISTS food_diary_cal_eaten (" +
                         "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        " fdce_id INTEGER, " +
-                        " fdce_date DATE, " +
-                        " fdce_meal_no INT, " +
-                        " fdce_eaten_energy INT, " +
-                        " fdce_eaten_proteins INT, " +
-                        " fdce_eaten_carbs INT, " +
-                        " fdce_eaten_fat INT);");
+                        "fdce_id INTEGER, " +
+                        "fdce_date DATE, " +
+                        "fdce_meal_no INT, " +
+                        "fdce_eaten_energy INT, " +
+                        "fdce_eaten_proteins INT, " +
+                        "fdce_eaten_carbs INT, " +
+                        "fdce_eaten_fat INT);");
 
 
 
@@ -149,12 +149,12 @@ public class DBAdapter {
 
                 db.execSQL("CREATE TABLE IF NOT EXISTS food_diary_sum (" +
                         " _id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        " food_diary_sum_id INTEGER, " +
-                        " food_diary_sum_date DATE, " +
-                        " food_diary_sum_energy INT, " +
-                        " food_diary_sum_proteins INT, " +
-                        " food_diary_sum_carbs INT, " +
-                        " food_diary_sum_fat INT);");
+                        "food_diary_sum_id INTEGER, " +
+                        "food_diary_sum_date DATE, " +
+                        "food_diary_sum_energy INT, " +
+                        "food_diary_sum_proteins INT, " +
+                        "food_diary_sum_carbs INT, " +
+                        "food_diary_sum_fat INT);");
 
             } catch (SQLException e) {
                 e.printStackTrace();

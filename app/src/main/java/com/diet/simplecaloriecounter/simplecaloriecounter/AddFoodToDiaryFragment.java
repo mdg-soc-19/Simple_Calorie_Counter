@@ -549,14 +549,28 @@ public class AddFoodToDiaryFragment extends Fragment {
             Toast.makeText(getActivity(), "Gram cannot be empty", Toast.LENGTH_SHORT).show();
         }
 
-
-
+        String x = "";
+        String y = "";
 
         int year = Calendar.getInstance().get(Calendar.YEAR);
         int month = Calendar.getInstance().get(Calendar.MONTH);
-        ++month;
         int date = Calendar.getInstance().get(Calendar.DATE);
-        String stringFdDate = year + "-" + month + "-" + date;
+        ++month;
+
+        if(month < 10){
+            x  = "0" + month;
+        }
+        else{
+            x = "" + month;
+        }
+
+        if(date < 10){
+            y = "0" + date;
+        }
+        else{
+            y = "" + date;
+        }
+        String stringFdDate = year + "-" + x + "-" + y;
         String stringFdDateSQL = db.quoteSmart(stringFdDate);
 
 

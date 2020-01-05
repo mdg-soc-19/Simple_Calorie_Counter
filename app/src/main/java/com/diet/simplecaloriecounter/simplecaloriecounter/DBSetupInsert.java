@@ -29,72 +29,106 @@ public class DBSetupInsert {
     }
 
     public void insertAllFood(){
-        setupInsertToFood("NULL, 'Apple', 'Farheen Fruits Company, Kolkata, West Bengal', '100', 'gram', '1', 'piece', '59', '56', '1.2', '1.8', '59', '56', '1.2', '1.8', NULL, NULL, '13', NULL, NULL, NULL, NULL, NULL");
+        setupInsertToFood("NULL, 'Apple', 'Farheen Fruits Company, Kolkata, West Bengal', '100', 'gram', '1', 'piece', '59', '56', '1.2', '1.8', '59', '56', '1.2', '1.8', NULL, NULL, '11', NULL, NULL, NULL, NULL, NULL");
+        setupInsertToFood("NULL, 'Dal(Cooked)', 'nil', '150', 'ml', '1', 'Katori/Cup', '68', '11', '51', '6', '100', '16', '80', '9', NULL, NULL, '2', NULL, NULL, NULL, NULL, NULL");
+        setupInsertToFood("NULL, 'Maa ki Dal', 'nil', '150', 'ml', '1', 'Katori/Cup', '61', '20', '41', '0', '92', '30', '62', '0', NULL, NULL, '3', NULL, NULL, NULL, NULL, NULL");
+
     }
 
     public void insertAllCategories(){
-        setupInsertToCategories("NULL, 'Bread', '0', '', NULL");
-        setupInsertToCategories("NULL, 'Bread', '1', '', NULL");
-        setupInsertToCategories("NULL, 'Cereals', '1', '', NULL");
-        setupInsertToCategories("NULL, 'Frozen bread and rolls', '1', '', NULL");
-        setupInsertToCategories("NULL, 'Crispbread', '1', '', NULL");
+        setupInsertToCategories("NULL, 'Pulses and Legumes and their Preparations', '0', '', NULL");
+        setupInsertToCategories("NULL, 'Pulses and Legumes', '1', '', NULL");
+        setupInsertToCategories("NULL, 'Preparations of Pulses and Legumes', '1', '', NULL");
 
 
-        setupInsertToCategories("NULL, 'Dessert and baking', '0', '', NULL");
-        setupInsertToCategories("NULL, 'Baking', '6', '', NULL");
-        setupInsertToCategories("NULL, 'Biscuit', '6', '', NULL");
+        setupInsertToCategories("NULL, 'Nuts and Oilseeds', '0', '', NULL");
+        setupInsertToCategories("NULL, 'Nuts', '4', '', NULL");
+        setupInsertToCategories("NULL, 'Oilseeds', '4', '', NULL");
 
 
-        setupInsertToCategories("NULL, 'Drinks', '0', '', NULL");
-        setupInsertToCategories("NULL, 'Soda', '9', '', NULL");
+        setupInsertToCategories("NULL, 'Vegetables Preparations', '0', '', NULL");
+        setupInsertToCategories("NULL, 'Vegetable', '7', '', NULL");
+        setupInsertToCategories("NULL, 'Preparations of Vegetables', '7', '', NULL");
 
 
-        setupInsertToCategories("NULL, 'Fruit and vegetables', '0', '', NULL");
-        setupInsertToCategories("NULL, 'Frozen fruits and vegetables', '11', '', NULL");
-        setupInsertToCategories("NULL, 'Fruit', '11', '', NULL");
-        setupInsertToCategories("NULL, 'Vegetables', '11', '', NULL");
-        setupInsertToCategories("NULL, 'Canned fruits and vegetables', '11', '', NULL");
+        setupInsertToCategories("NULL, 'Fruits', '0', '', NULL");
+        setupInsertToCategories("NULL, 'Apple and Pears', '10', '', NULL");
+        setupInsertToCategories("NULL, 'Citrus  Fruits', '10', '', NULL");
+        setupInsertToCategories("NULL, 'Stone Fruit', '10', '', NULL");
+        setupInsertToCategories("NULL, 'Tropical and exotic', '10', '', NULL");
+        setupInsertToCategories("NULL, 'Berries', '10', '', NULL");
+        setupInsertToCategories("NULL, 'Melons', '10', '', NULL");
+        setupInsertToCategories("NULL, 'Tomatoes and avocados', '10', '', NULL");
 
 
-        setupInsertToCategories("NULL, 'Health', '0', '', NULL");
-        setupInsertToCategories("NULL, 'Meal substitutes', '16', '', NULL");
-        setupInsertToCategories("NULL, 'Protein bars', '16', '', NULL");
-        setupInsertToCategories("NULL, 'Protein powder', '16', '', NULL");
+
+        setupInsertToCategories("NULL, 'Dairy Products', '0', '', NULL");
+        setupInsertToCategories("NULL, 'Butter', '18', '', NULL");
+        setupInsertToCategories("NULL, 'Cream', '18', '', NULL");
+        setupInsertToCategories("NULL, 'Yogurt', '18', '', NULL");
+        setupInsertToCategories("NULL, 'Ice Cream', '18', '', NULL");
+        setupInsertToCategories("NULL, 'Milk', '18', '', NULL");
+        setupInsertToCategories("NULL, 'Cheese', '18', '', NULL");
 
 
-        setupInsertToCategories("NULL, 'Meat, chicken and fish', '0', '', NULL");
-        setupInsertToCategories("NULL, 'Meat', '20', '', NULL");
-        setupInsertToCategories("NULL, 'Chicken', '20', '', NULL");
-        setupInsertToCategories("NULL, 'Seafood', '20', '', NULL");
+
+        setupInsertToCategories("NULL, 'Cereal and Cereal products', '0', '', NULL");
+        setupInsertToCategories("NULL, 'Cereals', '25', '', NULL");
+        setupInsertToCategories("NULL, 'Their Products', '25', '', NULL");
 
 
-        setupInsertToCategories("NULL, 'Dairy and eggs', '0', '', NULL");
-        setupInsertToCategories("NULL, 'Eggs', '24', '', NULL");
-        setupInsertToCategories("NULL, 'Cream and sour cream', '24', '', NULL");
-        setupInsertToCategories("NULL, 'Yogurt', '24', '', NULL");
+        setupInsertToCategories("NULL, 'Added Sugars', '0', '', NULL");
+        setupInsertToCategories("NULL, 'Honey', '28', '', NULL");
+        setupInsertToCategories("NULL, 'Sugar/Jaggery', '28', '', NULL");
 
 
-        setupInsertToCategories("NULL, 'Dinner', '0', '', NULL");
-        setupInsertToCategories("NULL, 'Ready dinner dishes', '28', '', NULL");
-        setupInsertToCategories("NULL, 'Pizza', '28', '', NULL");
-        setupInsertToCategories("NULL, 'Noodle', '28', '', NULL");
-        setupInsertToCategories("NULL, 'Pasta', '28', '', NULL");
-        setupInsertToCategories("NULL, 'Rice', '28', '', NULL");
-        setupInsertToCategories("NULL, 'Taco', '28', '', NULL");
+        setupInsertToCategories("NULL, 'Soups', '0', '', NULL");
+        setupInsertToCategories("NULL, 'Veg Soups', '31', '', NULL");
+        setupInsertToCategories("NULL, 'Non Veg Soups', '31', '', NULL");
 
 
-        setupInsertToCategories("NULL, 'Cheese', '0', '', NULL");
-        setupInsertToCategories("NULL, 'Cream cheese', '35', '', NULL");
+        setupInsertToCategories("NULL, 'Bread/Cereal Preparations', '0', '', NULL");
+        setupInsertToCategories("NULL, 'Breads', '34', '', NULL");
+        setupInsertToCategories("NULL, 'Their Preparations', '34', '', NULL");
+
+        setupInsertToCategories("NULL, 'Salad/Chutney/Raita Preparations', '0', '', NULL");
+        setupInsertToCategories("NULL, 'Salad/Chutney/Raita Preparations', '37', '', NULL");
+
+        setupInsertToCategories("NULL, 'Meat, Fish and Egg Preparations', '0', '', NULL");
+        setupInsertToCategories("NULL, 'Meats', '39', '', NULL");
+        setupInsertToCategories("NULL, 'Fishes', '39', '', NULL");
+        setupInsertToCategories("NULL, 'Eggs', '39', '', NULL");
+        setupInsertToCategories("NULL, 'Their Preparations', '39', '', NULL");
+
+        setupInsertToCategories("NULL, 'Sweets and Desserts', '0', '', NULL");
+        setupInsertToCategories("NULL, 'Frozen desserts', '44', '', NULL");
+        setupInsertToCategories("NULL, 'Biscuits or cookies', '44', '', NULL");
+        setupInsertToCategories("NULL, 'Chocolate and Candies', '44', '', NULL");
+        setupInsertToCategories("NULL, 'Custards and Puddings', '44', '', NULL");
+        setupInsertToCategories("NULL, 'Pies', '44', '', NULL");
+        setupInsertToCategories("NULL, 'Deep Fried Deserts', '44', '', NULL");
+        setupInsertToCategories("NULL, 'Sweets', '44', '', NULL");
 
 
-        setupInsertToCategories("NULL, 'On bread', '0', '', NULL");///////
-        setupInsertToCategories("NULL, 'Cold meats', '37', '', NULL");
-        setupInsertToCategories("NULL, 'Sweet spreads', '37', '', NULL");
-        setupInsertToCategories("NULL, 'Jam', '37', '', NULL");
+        setupInsertToCategories("NULL, 'Snacks', '0', '', NULL");
+        setupInsertToCategories("NULL, 'Pakodas', '52', '', NULL");
+        setupInsertToCategories("NULL, 'Sandwiches', '52', '', NULL");
 
+        setupInsertToCategories("NULL, 'Alcoholic Beverages ', '0', '', NULL");
+        setupInsertToCategories("NULL, 'Beer', '55', '', NULL");
+        setupInsertToCategories("NULL, 'Gin', '55', '', NULL");
+        setupInsertToCategories("NULL, 'Rum', '55', '', NULL");
+        setupInsertToCategories("NULL, 'Whiskey', '55', '', NULL");
+        setupInsertToCategories("NULL, 'Wine', '55', '', NULL");
 
-        setupInsertToCategories("NULL, 'Snacks', '0', '', NULL");/////////
-        setupInsertToCategories("NULL, 'Nuts', '41', '', NULL");
-        setupInsertToCategories("NULL, 'Potato chips', '41', '', NULL");
+        setupInsertToCategories("NULL, 'Cakes And Pastries', '0', '', NULL");
+        setupInsertToCategories("NULL, 'Egg', '61', '', NULL");
+        setupInsertToCategories("NULL, 'EggLess', '61', '', NULL");
+
+        setupInsertToCategories("NULL, 'Fast Foods', '0', '', NULL");
+        setupInsertToCategories("NULL, 'Pizzas', '64', '', NULL");
+        setupInsertToCategories("NULL, 'Burgers', '64', '', NULL");
+        setupInsertToCategories("NULL, 'Fried Chicken', '64', '', NULL");
+        setupInsertToCategories("NULL, 'Hot Dog', '64', '', NULL");
     }
 }
