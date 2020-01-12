@@ -157,7 +157,7 @@
 
     <string name="portion_size">Portion size = </string>
     <string name="pcs">Quantity/Spoon/Tablespoon/Cup</string>
-    <string name="gram">gram</string>
+    <string name="gram">gram/ml</string>
     <string name="add_to_diary">Add to diary</string>
     <string name="unlink">Unlink</string>
 

@@ -121,16 +121,21 @@
 
                 <TextView
                     android:id="@+id/textViewBlank"
-                    android:layout_width="81dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="83dp"
+                    android:layout_height="match_parent"
                     android:text="@string/blank" />
 
-                <Button
-                    android:id="@+id/buttonSubmit"
-                    android:layout_width="226dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:text="@string/add_to_diary" />
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <Button
+                        android:id="@+id/buttonSubmit"
+                        android:layout_width="188dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/add_to_diary" />
+                </TableRow>
 
             </TableRow>
         </TableLayout>
