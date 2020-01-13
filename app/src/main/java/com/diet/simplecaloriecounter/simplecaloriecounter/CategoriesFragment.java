@@ -47,6 +47,9 @@ public class CategoriesFragment extends Fragment implements IOnBackPressed {
     private MenuItem menuItemEdit;
     private MenuItem menuItemDelete;
 
+    private String currentCategoryId;
+    private String currentCategoryName;
+
     private String currentFoodId;
     private String currentFoodName;
 
@@ -230,7 +233,7 @@ public class CategoriesFragment extends Fragment implements IOnBackPressed {
         db.open();
 
         String[] fieldsC = new String[] { "category_parent_id" };
-        String currentIdSQL = db.quoteSmart(currentId);
+        String currentIdSQL = db.quoteSmart(currentCategoryId);
 
         Cursor c = db.select("categories", fieldsC, "_id", currentIdSQL);
         String currentParentID = c.getString(0);
@@ -324,7 +327,7 @@ public class CategoriesFragment extends Fragment implements IOnBackPressed {
 
         if(error == 0){
 
-            long longCurrentID = Long.parseLong(currentId);
+            long longCurrentID = Long.parseLong(currentCategoryId);
 
 
             long currentIDSQL = db.quoteSmart(longCurrentID);
@@ -388,7 +391,7 @@ public class CategoriesFragment extends Fragment implements IOnBackPressed {
         db.open();
 
 
-        long longCurrentID = Long.parseLong(currentId);
+        long longCurrentID = Long.parseLong(currentCategoryId);
 
 
         long currentIDSQL = db.quoteSmart(longCurrentID);
@@ -457,16 +460,16 @@ public class CategoriesFragment extends Fragment implements IOnBackPressed {
 
         categoriesCursor.moveToPosition(listItemIDClicked);
 
-        String currentId = categoriesCursor.getString(0);
-        String currentName = categoriesCursor.getString(1);
+        currentCategoryId = categoriesCursor.getString(0);
+        currentName = categoriesCursor.getString(1);
         String parentID = categoriesCursor.getString(2);
 
 
         ((MainActivity)getActivity()).getSupportActionBar().setTitle(currentName);
 
-        populateList(currentId,currentName);
+        populateList(currentCategoryId,currentName);
 
-        showFoodInCategory(currentId, currentName, parentID);
+        showFoodInCategory(currentCategoryId, currentName, parentID);
     }
 
     public void showFoodInCategory(String categoryId, String categoryName, String categoryParentID){

@@ -30,16 +30,18 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:text="@string/breakfast"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/holo_purple" />
 
         <TextView
             android:id="@+id/textViewLunch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:text="@string/lunch"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/holo_purple" />
 
         <TextView
             android:id="@+id/textView2"
@@ -52,10 +54,11 @@
             android:id="@+id/textViewBeforeTraining"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:text="@string/before_training" />
+            android:text="@string/before_training"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/holo_purple" />
 
         <TextView
             android:id="@+id/textView3"
@@ -68,10 +71,11 @@
             android:id="@+id/textViewAfterTraining"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:text="@string/after_training" />
+            android:text="@string/after_training"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/holo_purple" />
 
         <TextView
             android:id="@+id/textView4"
@@ -84,10 +88,11 @@
             android:id="@+id/textViewDinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:text="@string/dinner" />
+            android:text="@string/dinner"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/holo_purple" />
 
         <TextView
             android:id="@+id/textView5"
@@ -100,10 +105,11 @@
             android:id="@+id/textViewSnacks"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:text="@string/snacks" />
+            android:text="@string/snacks"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/holo_purple" />
 
         <TextView
             android:id="@+id/textView6"
@@ -116,9 +122,10 @@
             android:id="@+id/textViewSupper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_marginTop="8dp"
-            android:text="@string/supper" />
+            android:text="@string/supper"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/holo_purple" />
 
     </LinearLayout>
 </ScrollView>

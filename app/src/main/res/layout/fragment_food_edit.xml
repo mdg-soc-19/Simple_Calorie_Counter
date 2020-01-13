@@ -14,14 +14,13 @@
         android:layout_marginLeft="24dp">
 
 
-
-
         <TextView
             android:id="@+id/textViewEditGeneral"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
             android:text="@string/general"
+            android:textColor="@android:color/holo_orange_light"
             android:textSize="18sp" />
 
         <TableLayout
@@ -38,9 +37,10 @@
                     android:id="@+id/textViewViewFoodName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
                     android:layout_marginLeft="8dp"
-                    android:text="@string/name" />
+                    android:layout_marginRight="8dp"
+                    android:text="@string/name"
+                    android:textColor="@android:color/holo_purple" />
 
                 <EditText
                     android:id="@+id/editTextEditFoodName"
@@ -58,9 +58,10 @@
                     android:id="@+id/textViewViewFoodManufactor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
                     android:layout_marginLeft="8dp"
-                    android:text="@string/manufactor" />
+                    android:layout_marginRight="8dp"
+                    android:text="@string/manufactor"
+                    android:textColor="@android:color/holo_purple" />
 
                 <EditText
                     android:id="@+id/editTextEditFoodManufactor"
@@ -78,9 +79,10 @@
                     android:id="@+id/textViewViewFoodDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
                     android:layout_marginLeft="8dp"
-                    android:text="@string/description" />
+                    android:layout_marginRight="8dp"
+                    android:text="@string/description"
+                    android:textColor="@android:color/holo_purple" />
 
                 <EditText
                     android:id="@+id/editTextEditFoodDescription"
@@ -102,6 +104,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
             android:text="@string/category"
+            android:textColor="@android:color/holo_orange_light"
             android:textSize="18sp" />
 
         <TableLayout
@@ -119,9 +122,10 @@
                     android:id="@+id/textViewEditFoodMain"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
                     android:layout_marginLeft="8dp"
-                    android:text="@string/main" />
+                    android:layout_marginRight="8dp"
+                    android:text="@string/main"
+                    android:textColor="@android:color/holo_purple" />
 
 
                 <Spinner
@@ -140,9 +144,10 @@
                     android:id="@+id/textViewEditFoodSub"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
                     android:layout_marginLeft="8dp"
-                    android:text="@string/sub" />
+                    android:layout_marginRight="8dp"
+                    android:text="@string/sub"
+                    android:textColor="@android:color/holo_purple" />
 
 
                 <Spinner
@@ -155,14 +160,13 @@
         </TableLayout>
 
 
-
-
         <TextView
             android:id="@+id/textViewEditServing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
             android:text="@string/serving"
+            android:textColor="@android:color/holo_orange_light"
             android:textSize="18sp" />
 
         <TableLayout
@@ -181,7 +185,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
-                    android:text="@string/mesurment" />
+                    android:text="@string/mesurment"
+                    android:textColor="@android:color/holo_purple" />
 
                 <EditText
                     android:id="@+id/editTextEditFoodSize"
@@ -208,7 +213,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
-                    android:text="@string/word" />
+                    android:text="@string/word"
+                    android:textColor="@android:color/holo_purple" />
 
                 <EditText
                     android:id="@+id/editTextEditFoodNumber"
@@ -233,6 +239,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
             android:text="@string/calories_table"
+            android:textColor="@android:color/holo_orange_light"
             android:textSize="18sp" />
         <TableLayout
             android:layout_width="match_parent"
@@ -256,30 +263,37 @@
                     android:id="@+id/textViewViewFoodEnergy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
                     android:layout_marginLeft="6dp"
-                    android:text="@string/energy" />
+                    android:layout_marginRight="6dp"
+                    android:text="@string/energy"
+                    android:textColor="@color/colorPrimary" />
+
                 <TextView
                     android:id="@+id/textViewViewFoodProteins"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
                     android:layout_marginLeft="6dp"
-                    android:text="@string/proteins" />
+                    android:layout_marginRight="6dp"
+                    android:text="@string/proteins"
+                    android:textColor="@color/colorPrimary" />
+
                 <TextView
                     android:id="@+id/textViewViewFoodCarbs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
                     android:layout_marginLeft="6dp"
-                    android:text="@string/carbs" />
+                    android:layout_marginRight="6dp"
+                    android:text="@string/carbs"
+                    android:textColor="@color/colorPrimary" />
+
                 <TextView
                     android:id="@+id/textViewViewFoodFat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
                     android:layout_marginLeft="6dp"
-                    android:text="@string/fat" />
+                    android:layout_marginRight="6dp"
+                    android:text="@string/fat"
+                    android:textColor="@color/colorPrimary" />
             </TableRow>
 
             <TableRow
@@ -293,7 +307,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="6dp"
                     android:layout_marginRight="6dp"
-                    android:text="@string/per_hundred_gran" />
+                    android:text="@string/per_hundred_gran"
+                    android:textColor="@android:color/holo_purple" />
 
                 <EditText
                     android:id="@+id/editTextEditFoodEnergyPerHundred"
@@ -333,12 +348,11 @@
         </TableLayout>
 
 
-
-
         <Button
             android:id="@+id/buttonEditFood"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="128dp"
+            android:layout_height="69dp"
+            android:background="@drawable/oval"
             android:text="@string/save" />
 
 

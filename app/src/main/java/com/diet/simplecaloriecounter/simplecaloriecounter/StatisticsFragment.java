@@ -152,6 +152,7 @@ public class StatisticsFragment extends Fragment implements IOnBackPressed{
             cursorFoodDiarySum.moveToNext();
 
         }
+
         BarDataSet bardataset = new BarDataSet(yAxis, "Calories(kcal)");
         mChart.animateY(1500);
         BarData data = new BarData(xAxis ,bardataset);
@@ -160,8 +161,8 @@ public class StatisticsFragment extends Fragment implements IOnBackPressed{
         mChart.setData(data);
 
         // Changing Text sizes
-        mChart.getXAxis().setTextSize(14f);
-        bardataset.setValueTextSize(30f);
+        mChart.getXAxis().setTextSize(10f);
+        bardataset.setValueTextSize(17f);
 
         // Setting Y - Axis Range
         YAxis LeftYAxis = mChart.getAxisLeft();

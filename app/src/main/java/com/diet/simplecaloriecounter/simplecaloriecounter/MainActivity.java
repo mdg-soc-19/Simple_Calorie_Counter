@@ -70,16 +70,7 @@ public class MainActivity extends AppCompatActivity
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
-        /*
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        */
+
 
         DrawerLayout drawer =  findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -119,7 +110,6 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(this, "Just a few steps away from signing up", Toast.LENGTH_LONG).show();
             Intent i = new Intent(MainActivity.this, SignUp.class);
             startActivity(i);
-
         }
 
         db.close();
@@ -201,6 +191,8 @@ public class MainActivity extends AppCompatActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         try {
             fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+
+
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(this, "Error: " + e.toString(), Toast.LENGTH_LONG).show();

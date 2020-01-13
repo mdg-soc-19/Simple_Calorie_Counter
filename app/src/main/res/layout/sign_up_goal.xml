@@ -29,7 +29,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingTop="8dp"
-            android:text="Error!" />
+            android:text="Error!"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp" />
     </TableRow>
 
     <TableLayout
@@ -47,7 +49,8 @@
                 android:layout_height="match_parent"
                 android:paddingLeft="7dp"
                 android:paddingTop="11dp"
-                android:text="@string/target_weight" />
+                android:text="@string/target_weight"
+                android:textColor="@android:color/holo_blue_dark" />
 
             <TableRow
                 android:layout_width="match_parent"
@@ -65,7 +68,8 @@
                     android:layout_width="71dp"
                     android:layout_height="match_parent"
                     android:paddingTop="11dp"
-                    android:text="@string/kg" />
+                    android:text="@string/kg"
+                    android:textColor="@color/colorAccent" />
             </TableRow>
 
         </TableRow>
@@ -81,7 +85,8 @@
                 android:layout_height="match_parent"
                 android:paddingLeft="8dp"
                 android:paddingTop="2dp"
-                android:text="@string/i_want_to" />
+                android:text="@string/i_want_to"
+                android:textColor="@android:color/holo_blue_dark" />
 
             <TableRow
                 android:layout_width="175dp"
@@ -107,7 +112,8 @@
                 android:layout_height="match_parent"
                 android:paddingLeft="8dp"
                 android:paddingTop="1dp"
-                android:text="@string/weekly_goal" />
+                android:text="@string/weekly_goal"
+                android:textColor="@android:color/holo_blue_dark" />
 
             <TableRow
                 android:layout_width="225dp"
@@ -124,7 +130,8 @@
                     android:id="@+id/textViewWeeklyGoal2"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="@string/kg_each_week" />
+                    android:text="@string/kg_each_week"
+                    android:textColor="@color/colorAccent" />
             </TableRow>
 
         </TableRow>
@@ -147,6 +154,7 @@
                     android:id="@+id/buttonSignUpGoal"
                     android:layout_width="160dp"
                     android:layout_height="match_parent"
+                    android:background="@drawable/oval"
                     android:text="Lets Go!" />
             </TableRow>
 

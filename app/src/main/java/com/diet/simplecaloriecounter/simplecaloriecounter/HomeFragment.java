@@ -2,6 +2,7 @@ package com.diet.simplecaloriecounter.simplecaloriecounter;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -334,7 +335,6 @@ public class HomeFragment extends Fragment implements IOnBackPressed{
             db.update("food_diary_sum", "_id", longFoodDiaryId, updateFields, updateValues);
         }
 
-
         // Get goal
         String[] fieldsGoal = new String[]{
                 "_id",
@@ -526,15 +526,18 @@ public class HomeFragment extends Fragment implements IOnBackPressed{
             TextView textViewName = new TextView(getActivity());
             textViewName.setText(foodName);
             tr1.addView(textViewName);
+            textViewName.setTextColor(Color.parseColor("#ff99cc00"));
 
 
             TextView textViewEnergy = new TextView(getActivity());
             textViewEnergy.setText(fdEnergyCalculated);
+            textViewEnergy.setTextColor(Color.parseColor("#ff99cc00"));
             tr1.addView(textViewEnergy);
 
 
             TextView textViewSubLine = new TextView(getActivity());
             textViewSubLine.setText(subLine);
+            textViewSubLine.setTextColor(Color.parseColor("#ff99cc00"));
             tr2.addView(textViewSubLine);
 
 
@@ -1187,6 +1190,21 @@ public class HomeFragment extends Fragment implements IOnBackPressed{
                 .attach(fragment)
                 .commit();
         return true;
+    }
+
+    private String getAge(int year, int month, int date){
+        Calendar dob = Calendar.getInstance();
+        Calendar today = Calendar.getInstance();
+
+        dob.set(year, month, date);
+
+        int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
+
+        if (today.get(Calendar.DAY_OF_YEAR) < dob.get(Calendar.DAY_OF_YEAR)){
+            --age;
+        }
+
+        return "" + age;
     }
 
 
