@@ -157,7 +157,7 @@
 
     <string name="portion_size">Portion size = </string>
     <string name="pcs">Quantity/Spoon/Tablespoon/Cup</string>
-    <string name="gram">gram</string>
+    <string name="gram">gram/ml</string>
     <string name="add_to_diary">Add to diary</string>
     <string name="unlink">Unlink</string>
 
@@ -165,7 +165,11 @@
     <string name="consumed">Consumed Calories</string>
     <string name="remaining">Remaining Calories</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="note">Notes:</string>
+    <string name="note1">1: Click On The Eaten Foods to Either Remove it or Edit it.</string>
+    <string name="note2">2: Click on (+) Sign to Add Eaten Food to Food Diary.</string>
+
 
 </resources>

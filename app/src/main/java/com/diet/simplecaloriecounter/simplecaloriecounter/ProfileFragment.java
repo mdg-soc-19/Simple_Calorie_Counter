@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -34,7 +35,7 @@ public class ProfileFragment extends Fragment implements IOnBackPressed{
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-
+    private int count;
     private String mParam1;
     private String mParam2;
 
@@ -75,7 +76,10 @@ public class ProfileFragment extends Fragment implements IOnBackPressed{
 
         ((MainActivity)getActivity()).getSupportActionBar().setTitle("Profile");
 
+        count = 0;
+
         initializeGetDataFromDbAndDisplay();
+
 
     }
 
@@ -103,6 +107,41 @@ public class ProfileFragment extends Fragment implements IOnBackPressed{
         String stringUserDobYear = items1[0];
         String stringUserDobMonth = items1[1];
         String stringUserDobDate = items1[2];
+
+
+        Spinner spinnerEditProfileMesurment = getActivity().findViewById(R.id.spinnerEditProfileMesurment);
+        if(stringUserMesurment.startsWith("m")) {
+            spinnerEditProfileMesurment.setSelection(0);
+            count = 1;
+
+        }
+        else{
+            spinnerEditProfileMesurment.setSelection(1);
+            count = 1;
+
+        }
+
+        spinnerEditProfileMesurment.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                ++count;
+                return false;
+            }
+        });
+
+                spinnerEditProfileMesurment.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                        if(count!=1) {
+                            mesurmentChanged();
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parentView) {
+
+                    }
+                });
 
 
         int spinnerDOBDaySelectedIndex = 0;
@@ -177,14 +216,17 @@ public class ProfileFragment extends Fragment implements IOnBackPressed{
         EditText editTextEditProfileHeightInches = getActivity().findViewById(R.id.editTextEditProfileHeightInches);
         TextView textViewEditProfileCm = getActivity().findViewById(R.id.textViewEditProfileCm);
 
+        double heightCm = 0;
+        double heightFeet;
+        double heightInches;
+
         if (stringUserMesurment.startsWith("m")) {
             editTextEditProfileHeightInches.setVisibility(View.GONE);
             editTextEditProfileHeightCm.setText(stringUserHeight);
+
         } else {
+            editTextEditProfileHeightInches.setVisibility(View.VISIBLE);
             textViewEditProfileCm.setText("Feet and Inches");
-            double heightCm = 0;
-            double heightFeet;
-            double heightInches;
 
             try {
                 heightCm = Double.parseDouble(stringUserHeight);
@@ -194,35 +236,15 @@ public class ProfileFragment extends Fragment implements IOnBackPressed{
             if (heightCm != 0) {
 
                 heightFeet = (heightCm)/30.48;
-                heightInches =(heightFeet - (int)heightFeet)*12;
+                heightInches = (heightFeet - (int)heightFeet)*12;
 
-                editTextEditProfileHeightCm.setText((int)heightFeet);
-                editTextEditProfileHeightInches.setText((int)heightInches);
+                editTextEditProfileHeightCm.setText("" + (int)heightFeet);
+                editTextEditProfileHeightInches.setText("" + (int)heightInches);
+
 
             }
 
         }
-
-        Spinner spinnerEditProfileMesurment = getActivity().findViewById(R.id.spinnerEditProfileMesurment);
-        if(stringUserMesurment.startsWith("m")) {
-            spinnerEditProfileMesurment.setSelection(0);
-        }
-        else{
-            spinnerEditProfileMesurment.setSelection(1);
-        }
-
-
-        spinnerEditProfileMesurment.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                mesurmentChanged();
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-
-            }
-        });
-
 
         Button buttonEditProfileSubmit = getActivity().findViewById(R.id.buttonEditProfileSubmit);
         buttonEditProfileSubmit.setOnClickListener(new View.OnClickListener(){
@@ -236,6 +258,7 @@ public class ProfileFragment extends Fragment implements IOnBackPressed{
     }
 
     public void mesurmentChanged(){
+
         Spinner spinnerMesurment = getActivity().findViewById(R.id.spinnerEditProfileMesurment);
         String stringMesurment = spinnerMesurment.getSelectedItem().toString();
 
@@ -249,53 +272,36 @@ public class ProfileFragment extends Fragment implements IOnBackPressed{
         String stringHeightInches = editTextEditProfileHeightInches.getText().toString();
 
         double heightCm = 0;
-        double heightFeet = 0;
         double heightInches = 0;
+        double heightFeet = 0;
 
         if(stringMesurment.startsWith("M")) {
 
             editTextEditProfileHeightInches.setVisibility(View.GONE);
             textViewEditProfileCm.setText("cm");
 
-            try {
-                heightFeet = Double.parseDouble(stringHeightCm);
-            }
-            catch(NumberFormatException nfe) {
+            heightFeet = Double.parseDouble(stringHeightCm);
+            heightInches = Double.parseDouble(stringHeightInches);
 
-            }
+            heightCm = ((heightFeet*12) + heightInches)*2.54;
 
-            try {
-                heightInches = Double.parseDouble(stringHeightInches);
-            }
-            catch(NumberFormatException nfe) {
-
-            }
-
-            if(heightFeet != 0 && heightInches != 0) {
-                heightCm = ((heightFeet * 12) + heightInches) * 2.54;
-                editTextEditProfileHeightCm.setText("" + Math.round(heightCm));
-            }
+            editTextEditProfileHeightCm.setText("" + Math.round(heightCm));
 
         }
         else{
 
             editTextEditProfileHeightInches.setVisibility(View.VISIBLE);
             textViewEditProfileCm.setText("Feet and Inches");
-            try {
-                heightCm = Double.parseDouble(stringHeightCm);
-            }
-            catch(NumberFormatException nfe) {
 
-            }
-            if(heightCm != 0){
+            heightCm = Double.parseDouble(stringHeightCm);
 
-                heightFeet = heightCm/30.48;
-                heightInches = (heightFeet - (int)heightFeet)*12;
+            heightFeet = (heightCm)/30.48;
+            heightInches = (heightFeet - (int)heightFeet)*12;
 
-                editTextEditProfileHeightCm.setText("" + (int)heightFeet);
-                editTextEditProfileHeightInches.setText("" + (int)heightInches);
+            editTextEditProfileHeightCm.setText("" + (int)heightFeet);
+            editTextEditProfileHeightInches.setText("" + (int)heightInches);
 
-            }
+
         }
     }
 
@@ -461,7 +467,6 @@ public class ProfileFragment extends Fragment implements IOnBackPressed{
 
         db.close();
     }
-
 
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 

@@ -20,13 +20,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/name"
+            android:textColor="@android:color/holo_green_light"
             android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textViewViewFoodManufactorName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/manufactor" />
+            android:text="@string/manufactor"
+            android:textColor="@android:color/holo_green_light" />
 
 
         <TableLayout
@@ -45,7 +47,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="@string/portion_size" />
+                    android:text="@string/portion_size"
+                    android:textColor="@android:color/holo_orange_light" />
 
                 <TableLayout
                     android:layout_width="match_parent"
@@ -70,7 +73,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="4dp"
                             android:layout_marginLeft="4dp"
-                            android:text="@string/pcs" />
+                            android:text="@string/pcs"
+                            android:textColor="@color/colorAccent" />
                     </TableRow>
                 </TableLayout>
             </TableRow>
@@ -79,12 +83,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="8dp">
+
                 <TextView
                     android:id="@+id/textViewPortionSizeB"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="@string/portion_size" />
+                    android:text="@string/portion_size"
+                    android:textColor="@android:color/holo_orange_light" />
 
                 <TableLayout
                     android:layout_width="match_parent"
@@ -107,9 +113,10 @@
                             android:id="@+id/textViewGram"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="4dp"
                             android:layout_marginStart="4dp"
-                            android:text="@string/gram" />
+                            android:layout_marginLeft="4dp"
+                            android:text="@string/gram"
+                            android:textColor="@color/colorAccent" />
                     </TableRow>
                 </TableLayout>
             </TableRow>
@@ -121,16 +128,22 @@
 
                 <TextView
                     android:id="@+id/textViewBlank"
-                    android:layout_width="81dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="83dp"
+                    android:layout_height="match_parent"
                     android:text="@string/blank" />
 
-                <Button
-                    android:id="@+id/buttonSubmit"
-                    android:layout_width="226dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:text="@string/add_to_diary" />
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <Button
+                        android:id="@+id/buttonSubmit"
+                        android:layout_width="188dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/oval"
+                        android:text="@string/add_to_diary" />
+                </TableRow>
 
             </TableRow>
         </TableLayout>
@@ -139,23 +152,24 @@
         <ImageView
             android:id="@+id/imageViewViewFoodImage"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="191dp"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="12dp"
-            app:srcCompat="@drawable/logo" />
+            app:srcCompat="@drawable/logo1" />
 
         <TextView
             android:id="@+id/textViewViewFoodAbout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/about" />
+            android:text="@string/about"
+            android:textColor="@android:color/holo_green_light" />
 
         <TextView
             android:id="@+id/textViewViewFoodDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/description" />
-
+            android:text="@string/description"
+            android:textColor="@android:color/holo_green_light" />
 
 
         <TextView
@@ -164,6 +178,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
             android:text="@string/calories_table"
+            android:textColor="@android:color/holo_green_light"
             android:textSize="18sp" />
         <TableLayout
             android:layout_width="match_parent"
@@ -187,30 +202,37 @@
                     android:id="@+id/textViewViewFoodEnergy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
                     android:layout_marginEnd="6dp"
-                    android:text="@string/energy" />
+                    android:layout_marginRight="6dp"
+                    android:text="@string/energy"
+                    android:textColor="@color/design_default_color_primary_dark" />
+
                 <TextView
                     android:id="@+id/textViewViewFoodProteins"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
                     android:layout_marginEnd="6dp"
-                    android:text="@string/proteins" />
+                    android:layout_marginRight="6dp"
+                    android:text="@string/proteins"
+                    android:textColor="@color/design_default_color_primary_dark" />
+
                 <TextView
                     android:id="@+id/textViewViewFoodCarbs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
                     android:layout_marginEnd="6dp"
-                    android:text="@string/carbs" />
+                    android:layout_marginRight="6dp"
+                    android:text="@string/carbs"
+                    android:textColor="@color/design_default_color_primary_dark" />
+
                 <TextView
                     android:id="@+id/textViewViewFoodFat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
                     android:layout_marginEnd="6dp"
-                    android:text="@string/fat" />
+                    android:layout_marginRight="6dp"
+                    android:text="@string/fat"
+                    android:textColor="@color/design_default_color_primary_dark" />
             </TableRow>
 
             <TableRow
@@ -224,36 +246,44 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="6dp"
                     android:layout_marginRight="6dp"
-                    android:text="@string/per_hundred_gran" />
+                    android:text="@string/per_hundred_gran"
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <TextView
                     android:id="@+id/textViewViewFoodEnergyPerHundred"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
                     android:layout_marginEnd="6dp"
-                    android:text="@string/energy" />
+                    android:layout_marginRight="6dp"
+                    android:text="@string/energy"
+                    android:textColor="@android:color/background_dark" />
+
                 <TextView
                     android:id="@+id/textViewViewFoodProteinsPerHundred"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
                     android:layout_marginEnd="6dp"
-                    android:text="@string/proteins" />
+                    android:layout_marginRight="6dp"
+                    android:text="@string/proteins"
+                    android:textColor="@android:color/background_dark" />
+
                 <TextView
                     android:id="@+id/textViewViewFoodCarbsPerHundred"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
                     android:layout_marginEnd="6dp"
-                    android:text="@string/carbs" />
+                    android:layout_marginRight="6dp"
+                    android:text="@string/carbs"
+                    android:textColor="@android:color/background_dark" />
+
                 <TextView
                     android:id="@+id/textViewViewFoodFatPerHundred"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
                     android:layout_marginEnd="6dp"
-                    android:text="@string/fat" />
+                    android:layout_marginRight="6dp"
+                    android:text="@string/fat"
+                    android:textColor="@android:color/background_dark" />
             </TableRow>
 
             <TableRow
@@ -265,9 +295,10 @@
                     android:id="@+id/textViewViewFoodBlankPerN"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
                     android:layout_marginEnd="6dp"
-                    android:text="@string/per_meal" />
+                    android:layout_marginRight="6dp"
+                    android:text="@string/per_meal"
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <TextView
                     android:id="@+id/textViewViewFoodEnergyPerN"
@@ -275,30 +306,43 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="6dp"
                     android:layout_marginRight="6dp"
-                    android:text="@string/energy" />
+                    android:text="@string/energy"
+                    android:textColor="@android:color/background_dark" />
+
                 <TextView
                     android:id="@+id/textViewViewFoodProteinsPerN"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
                     android:layout_marginEnd="6dp"
-                    android:text="@string/proteins" />
+                    android:layout_marginRight="6dp"
+                    android:text="@string/proteins"
+                    android:textColor="@android:color/background_dark" />
+
                 <TextView
                     android:id="@+id/textViewViewFoodCarbsPerN"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
                     android:layout_marginEnd="6dp"
-                    android:text="@string/carbs" />
+                    android:layout_marginRight="6dp"
+                    android:text="@string/carbs"
+                    android:textColor="@android:color/background_dark" />
+
                 <TextView
                     android:id="@+id/textViewViewFoodFatPerN"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
                     android:layout_marginEnd="6dp"
-                    android:text="@string/fat" />
+                    android:layout_marginRight="6dp"
+                    android:text="@string/fat"
+                    android:textColor="@android:color/background_dark" />
             </TableRow>
         </TableLayout>
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:text="@string/blank" />
 
     </LinearLayout>
 </ScrollView>

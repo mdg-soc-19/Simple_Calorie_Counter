@@ -28,7 +28,8 @@
                 android:id="@+id/textViewName"
                 android:layout_width="68dp"
                 android:layout_height="wrap_content"
-                android:text="@string/name" />
+                android:text="@string/name"
+                android:textColor="@color/design_default_color_primary" />
 
             <EditText
                 android:id="@+id/editTextName"
@@ -46,7 +47,8 @@
                 android:id="@+id/textViewParent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Parent" />
+                android:text="@string/Parent"
+                android:textColor="@color/design_default_color_primary" />
 
             <Spinner
                 android:id="@+id/spinnerParent"
@@ -72,6 +74,7 @@
                     android:id="@+id/buttonCategorySubmit"
                     android:layout_width="148dp"
                     android:layout_height="match_parent"
+                    android:background="@drawable/oval"
                     android:text="SAVE" />
             </TableRow>
 

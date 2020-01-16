@@ -22,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/status"
+            android:textColor="@color/colorAccent"
             android:textSize="18sp" />
 
         <TableLayout
@@ -37,6 +38,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
+                    android:textColor="@color/design_default_color_primary_dark"
                     android:text="@string/weight" />
 
                 <TableLayout
@@ -51,6 +53,7 @@
                             android:id="@+id/editTextGoalCurrentWeight"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:textColor="@android:color/holo_green_dark"
                             android:ems="3"
                             android:inputType="number" />
 
@@ -58,7 +61,8 @@
                             android:id="@+id/textViewGoalCurrentWeightType"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/kg" />
+                            android:text="@string/kg"
+                            android:textColor="@android:color/holo_green_dark"/>
                     </TableRow>
                 </TableLayout>
             </TableRow>
@@ -75,7 +79,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="@string/target_weight" />
+                    android:text="@string/target_weight"
+                    android:textColor="@color/design_default_color_primary_dark"/>
 
                 <TableLayout
                     android:layout_width="match_parent"
@@ -91,13 +96,15 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:ems="3"
-                            android:inputType="number" />
+                            android:inputType="number"
+                            android:textColor="@android:color/holo_green_dark"/>
 
                         <TextView
                             android:id="@+id/textViewTargetWeightType"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/kg" />
+                            android:text="@string/kg"
+                            android:textColor="@android:color/holo_green_dark"/>
                     </TableRow>
                 </TableLayout>
             </TableRow>
@@ -112,14 +119,16 @@
                     android:id="@+id/textViewIWantTo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/i_want_to" />
+                    android:text="@string/i_want_to"
+                    android:textColor="@color/design_default_color_primary_dark"/>
 
                 <Spinner
                     android:id="@+id/spinnerIWantTo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
-                    android:entries="@array/i_want_to_array"/>
+                    android:entries="@array/i_want_to_array"
+                    android:textColor="@android:color/holo_green_dark"/>
 
             </TableRow>
 
@@ -132,7 +141,8 @@
                     android:id="@+id/textViewWeeklyGoalB"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/weekly_goal" />
+                    android:text="@string/weekly_goal"
+                    android:textColor="@color/design_default_color_primary_dark"/>
 
                 <TableLayout
                     android:layout_width="match_parent"
@@ -148,13 +158,15 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:entries="@array/weekly_goal_array"
+                            android:textColor="@android:color/holo_green_dark"
                             />
 
                         <TextView
                             android:id="@+id/textViewKgEachWeek"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/kg_each_week" />
+                            android:text="@string/kg_each_week"
+                            android:textColor="@android:color/holo_green_dark"/>
                     </TableRow>
                 </TableLayout>
             </TableRow>
@@ -172,13 +184,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/activity_level"
+                    android:textColor="@color/design_default_color_primary_dark"
                     />
 
                 <Spinner
                     android:id="@+id/spinnerActivityLevel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:entries="@array/activity_level" />
+                    android:entries="@array/activity_level"
+                    android:textColor="@android:color/holo_green_dark"
+                    />
 
             </TableRow>
             <!-- //Activity Level -->
@@ -195,6 +210,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:background="@drawable/oval"
             android:text="@string/save" />
 
         <!-- //Submit button -->
@@ -211,12 +227,14 @@
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent" >
+
                 <TextView
                     android:id="@+id/textViewGoalNumbers"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:text="@string/numbers"
+                    android:textColor="@color/colorAccent"
                     android:textSize="18sp" />
 
             </TableRow>
@@ -229,8 +247,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/if_you_want_to_loose_weight"
-            android:textSize="16sp"
-            />
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="16sp" />
         <!-- //I want to loose -->
 
 
@@ -256,28 +274,32 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="6dp"
-                    android:text="@string/energy" />
+                    android:text="@string/energy"
+                    android:textColor="@color/colorPrimaryDark"/>
 
                 <TextView
                     android:id="@+id/textViewGoalHeadcellProteins"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="6dp"
-                    android:text="@string/proteins" />
+                    android:text="@string/proteins"
+                    android:textColor="@color/colorPrimaryDark"/>
 
                 <TextView
                     android:id="@+id/textViewGoalHeadcellCarbs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="6dp"
-                    android:text="@string/carbs" />
+                    android:text="@string/carbs"
+                    android:textColor="@color/colorPrimaryDark"/>
 
                 <TextView
                     android:id="@+id/textViewGoalHeadcellFat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="6dp"
-                    android:text="@string/fat" />
+                    android:text="@string/fat"
+                    android:textColor="@color/colorPrimaryDark"/>
 
             </TableRow>
             <!-- //Headcell -->
@@ -291,35 +313,40 @@
                     android:id="@+id/textViewGoalMethodDiet"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/without_activity" />
+                    android:text="@string/without_activity"
+                    android:textColor="@color/colorPrimary" />
 
                 <TextView
                     android:id="@+id/textViewGoalEnergyDiet"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="6dp"
-                    android:text="@string/energy" />
+                    android:text="@string/energy"
+                    android:textColor="@android:color/background_dark" />
 
                 <TextView
                     android:id="@+id/textViewGoalProteinsDiet"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="6dp"
-                    android:text="@string/proteins" />
+                    android:text="@string/proteins"
+                    android:textColor="@android:color/background_dark" />
 
                 <TextView
                     android:id="@+id/textViewGoalCarbsDiet"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="6dp"
-                    android:text="@string/carbs" />
+                    android:text="@string/carbs"
+                    android:textColor="@android:color/background_dark" />
 
                 <TextView
                     android:id="@+id/textViewGoalFatDiet"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="6dp"
-                    android:text="@string/fat" />
+                    android:text="@string/fat"
+                    android:textColor="@android:color/background_dark" />
 
             </TableRow>
             <!-- //Loose with out activity -->
@@ -333,35 +360,40 @@
                     android:id="@+id/textViewGoalMethodWithActivityAndDiet"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/with_activity_" />
+                    android:text="@string/with_activity_"
+                    android:textColor="@color/colorPrimary" />
 
                 <TextView
                     android:id="@+id/textViewGoalEnergyWithActivityAndDiet"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="6dp"
-                    android:text="@string/energy" />
+                    android:text="@string/energy"
+                    android:textColor="@android:color/background_dark" />
 
                 <TextView
                     android:id="@+id/textViewGoalProteinsWithActivityAndDiet"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="6dp"
-                    android:text="@string/proteins" />
+                    android:text="@string/proteins"
+                    android:textColor="@android:color/background_dark" />
 
                 <TextView
                     android:id="@+id/textViewGoalCarbsWithActivityAndDiet"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="6dp"
-                    android:text="@string/carbs" />
+                    android:text="@string/carbs"
+                    android:textColor="@android:color/background_dark" />
 
                 <TextView
                     android:id="@+id/textViewGoalFatWithActivityAndDiet"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="6dp"
-                    android:text="@string/fat" />
+                    android:text="@string/fat"
+                    android:textColor="@android:color/background_dark" />
 
             </TableRow>
             <!-- //With activity -->
@@ -374,8 +406,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/if_you_want_to_keep_your_weight"
-            android:textSize="16sp"
-            />
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="16sp" />
 
 
 
@@ -401,28 +433,32 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="6dp"
-                    android:text="@string/energy" />
+                    android:text="@string/energy"
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <TextView
                     android:id="@+id/textViewGoalHeadcellProteinsB"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="6dp"
-                    android:text="@string/proteins" />
+                    android:text="@string/proteins"
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <TextView
                     android:id="@+id/textViewGoalHeadcellCarbsB"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="6dp"
-                    android:text="@string/carbs" />
+                    android:text="@string/carbs"
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <TextView
                     android:id="@+id/textViewGoalHeadcellFatB"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="6dp"
-                    android:text="@string/fat" />
+                    android:text="@string/fat"
+                    android:textColor="@color/colorPrimaryDark" />
 
             </TableRow>
             <!-- //Headcell -->
@@ -436,35 +472,40 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="6dp"
-                    android:text="@string/without_activity" />
+                    android:text="@string/without_activity"
+                    android:textColor="@color/colorPrimary" />
 
                 <TextView
                     android:id="@+id/textViewGoalEnergyBMR"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="6dp"
-                    android:text="@string/energy" />
+                    android:text="@string/energy"
+                    android:textColor="@android:color/background_dark" />
 
                 <TextView
                     android:id="@+id/textViewGoalProteinsBMR"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="6dp"
-                    android:text="@string/proteins" />
+                    android:text="@string/proteins"
+                    android:textColor="@android:color/background_dark" />
 
                 <TextView
                     android:id="@+id/textViewGoalCarbsBMR"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="6dp"
-                    android:text="@string/carbs" />
+                    android:text="@string/carbs"
+                    android:textColor="@android:color/background_dark" />
 
                 <TextView
                     android:id="@+id/textViewGoalFatBMR"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="6dp"
-                    android:text="@string/fat" />
+                    android:text="@string/fat"
+                    android:textColor="@android:color/background_dark" />
 
             </TableRow>
             <!-- //BMR -->
@@ -481,35 +522,40 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="6dp"
-                    android:text="@string/with_activity_" />
+                    android:text="@string/with_activity_"
+                    android:textColor="@color/colorPrimary" />
 
                 <TextView
                     android:id="@+id/textViewGoalEnergyWithActivity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="6dp"
-                    android:text="@string/energy" />
+                    android:text="@string/energy"
+                    android:textColor="@android:color/background_dark" />
 
                 <TextView
                     android:id="@+id/textViewGoalProteinsWithActivity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="6dp"
-                    android:text="@string/proteins" />
+                    android:text="@string/proteins"
+                    android:textColor="@android:color/background_dark" />
 
                 <TextView
                     android:id="@+id/textViewGoalCarbsWithActivity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="6dp"
-                    android:text="@string/carbs" />
+                    android:text="@string/carbs"
+                    android:textColor="@android:color/background_dark" />
 
                 <TextView
                     android:id="@+id/textViewGoalFatWithActivity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="6dp"
-                    android:text="@string/fat" />
+                    android:text="@string/fat"
+                    android:textColor="@android:color/background_dark" />
 
             </TableRow>
             <!-- //With activity -->

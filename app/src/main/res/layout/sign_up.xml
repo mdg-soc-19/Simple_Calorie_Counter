@@ -53,7 +53,8 @@
                     android:layout_height="match_parent"
                     android:paddingLeft="15dp"
                     android:paddingTop="15dp"
-                    android:text="@string/email" />
+                    android:text="@string/email"
+                    android:textColor="@color/design_default_color_primary_dark" />
 
                 <TableRow
                     android:layout_width="match_parent"
@@ -81,7 +82,8 @@
                     android:layout_height="match_parent"
                     android:paddingLeft="15dp"
                     android:paddingTop="2dp"
-                    android:text="@string/dob" />
+                    android:text="@string/dob"
+                    android:textColor="@color/design_default_color_primary_dark" />
 
                 <TableRow
                     android:layout_width="273dp"
@@ -128,7 +130,8 @@
                         android:id="@+id/textView3"
                         android:layout_width="75dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/date" />
+                        android:text="@string/date"
+                        android:textColor="@color/colorAccent" />
 
                     <TextView
                         android:id="@+id/textView5"
@@ -136,7 +139,8 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="14dp"
                         android:paddingRight="14dp"
-                        android:text="@string/month" />
+                        android:text="@string/month"
+                        android:textColor="@color/colorAccent" />
 
                     <TextView
                         android:id="@+id/textView6"
@@ -144,7 +148,8 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:text="@string/year" />
+                        android:text="@string/year"
+                        android:textColor="@color/colorAccent" />
                 </TableRow>
 
             </TableRow>
@@ -160,7 +165,8 @@
                     android:layout_height="match_parent"
                     android:paddingLeft="15dp"
                     android:paddingTop="5dp"
-                    android:text="@string/gender" />
+                    android:text="@string/gender"
+                    android:textColor="@color/design_default_color_primary_dark" />
 
                 <TableRow
                     android:layout_width="match_parent"
@@ -200,7 +206,8 @@
                     android:layout_height="match_parent"
                     android:paddingLeft="15dp"
                     android:paddingTop="7dp"
-                    android:text="@string/mesurment" />
+                    android:text="@string/mesurment"
+                    android:textColor="@color/design_default_color_primary_dark" />
 
                 <TableRow
                     android:layout_width="match_parent"
@@ -227,7 +234,8 @@
                     android:layout_height="match_parent"
                     android:paddingLeft="15dp"
                     android:paddingTop="15dp"
-                    android:text="@string/height" />
+                    android:text="@string/height"
+                    android:textColor="@color/design_default_color_primary_dark" />
 
                 <TableRow
                     android:layout_width="match_parent"
@@ -254,7 +262,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="2dp"
-                        android:text="@string/cm" />
+                        android:text="@string/cm"
+                        android:textColor="@color/colorAccent" />
 
                 </TableRow>
 
@@ -271,7 +280,8 @@
                     android:layout_height="match_parent"
                     android:paddingLeft="15dp"
                     android:paddingTop="20dp"
-                    android:text="@string/weight" />
+                    android:text="@string/weight"
+                    android:textColor="@color/design_default_color_primary_dark" />
 
                 <TableRow
                     android:layout_width="match_parent"
@@ -288,7 +298,8 @@
                         android:id="@+id/textViewKg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/kg" />
+                        android:text="@string/kg"
+                        android:textColor="@color/colorAccent" />
                 </TableRow>
             </TableRow>
 
@@ -303,7 +314,8 @@
                     android:layout_height="match_parent"
                     android:paddingLeft="15dp"
                     android:paddingTop="2dp"
-                    android:text="@string/activity_level" />
+                    android:text="@string/activity_level"
+                    android:textColor="@color/design_default_color_primary_dark" />
 
                 <TableRow
                     android:layout_width="match_parent"
@@ -336,12 +348,19 @@
                         android:id="@+id/buttonSignUp"
                         android:layout_width="178dp"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/oval"
                         android:text="@string/sign_up" />
                 </TableRow>
 
             </TableRow>
 
         </TableLayout>
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:text="@string/blank" />
 
     </LinearLayout>
 

@@ -18,9 +18,11 @@
             android:id="@+id/textViewFoodDeleteMessage"
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            android:paddingLeft="82dp"
+            android:paddingLeft="60dp"
             android:paddingTop="30dp"
-            android:text="@string/are_you_sure_you_want_to_delete" />
+            android:text="@string/are_you_sure_you_want_to_delete"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp" />
 
         <TableLayout
             android:layout_width="match_parent"
@@ -43,12 +45,14 @@
                     android:id="@+id/buttonFoodCancel"
                     android:layout_width="112dp"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/oval"
                     android:text="@string/cancel" />
 
                 <Button
                     android:id="@+id/buttonFoodConfirmDelete"
                     android:layout_width="113dp"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/oval"
                     android:text="@string/delete" />
             </TableRow>
 
