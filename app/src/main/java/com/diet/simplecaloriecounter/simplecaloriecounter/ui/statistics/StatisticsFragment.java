@@ -1,4 +1,4 @@
-package com.diet.simplecaloriecounter.simplecaloriecounter;
+package com.diet.simplecaloriecounter.simplecaloriecounter.ui.statistics;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -6,13 +6,12 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProviders;
 
 
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,21 +20,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.diet.simplecaloriecounter.simplecaloriecounter.DBAdapter;
+import com.diet.simplecaloriecounter.simplecaloriecounter.IOnBackPressed;
+import com.diet.simplecaloriecounter.simplecaloriecounter.MainActivity;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import com.diet.simplecaloriecounter.simplecaloriecounter.R;
 
-public class StatisticsFragment extends Fragment implements IOnBackPressed{
 
+public class StatisticsFragment extends Fragment implements IOnBackPressed {
+
+    private StatisticsViewModel mViewModel;
     private BarChart mChart;
 
     private static final String ARG_PARAM1 = "param1";
@@ -55,6 +59,9 @@ public class StatisticsFragment extends Fragment implements IOnBackPressed{
         // Required empty public constructor
     }
 
+    public static StatisticsFragment newInstance() {
+        return new StatisticsFragment();
+    }
 
     public static StatisticsFragment newInstance(String param1, String param2) {
         StatisticsFragment fragment = new StatisticsFragment();
@@ -74,8 +81,9 @@ public class StatisticsFragment extends Fragment implements IOnBackPressed{
         }
     }
 
-    public void onActivityCreated(Bundle savedInstanceState) {
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        mViewModel = ViewModelProviders.of(this).get(StatisticsViewModel.class);
 
         ((MainActivity) getActivity()).getSupportActionBar().setTitle("Statistics");
 
@@ -246,8 +254,8 @@ public class StatisticsFragment extends Fragment implements IOnBackPressed{
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater,@Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_statistics, container, false);
     }

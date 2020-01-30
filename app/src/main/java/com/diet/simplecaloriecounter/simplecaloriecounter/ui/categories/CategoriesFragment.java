@@ -1,18 +1,17 @@
-package com.diet.simplecaloriecounter.simplecaloriecounter;
+package com.diet.simplecaloriecounter.simplecaloriecounter.ui.categories;
 
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 
 
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProviders;
 
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -27,11 +26,19 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.diet.simplecaloriecounter.simplecaloriecounter.DBAdapter;
+import com.diet.simplecaloriecounter.simplecaloriecounter.FoodCursorAdapter;
+import com.diet.simplecaloriecounter.simplecaloriecounter.IOnBackPressed;
+import com.diet.simplecaloriecounter.simplecaloriecounter.MainActivity;
+import com.diet.simplecaloriecounter.simplecaloriecounter.R;
+import com.diet.simplecaloriecounter.simplecaloriecounter.ui.food.FoodFragment;
+
 import java.util.ArrayList;
 
 
 public class CategoriesFragment extends Fragment implements IOnBackPressed {
 
+    private CategoriesViewModel mViewModel;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -63,6 +70,11 @@ public class CategoriesFragment extends Fragment implements IOnBackPressed {
         // Required empty public constructor
     }
 
+    public static CategoriesFragment newInstance() {
+        return new CategoriesFragment();
+    }
+
+
     public static CategoriesFragment newInstance(String param1, String param2) {
         CategoriesFragment fragment = new CategoriesFragment();
         Bundle args = new Bundle();
@@ -83,8 +95,10 @@ public class CategoriesFragment extends Fragment implements IOnBackPressed {
     }
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState){
+    public void onActivityCreated(@Nullable Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
+
+        mViewModel = ViewModelProviders.of(this).get(CategoriesViewModel.class);
 
         try {
             ((MainActivity) getActivity()).getSupportActionBar().setTitle("Categories");
@@ -546,8 +560,8 @@ public class CategoriesFragment extends Fragment implements IOnBackPressed {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_categories, container, false);
     }

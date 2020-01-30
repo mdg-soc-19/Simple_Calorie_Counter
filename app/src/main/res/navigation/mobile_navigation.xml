@@ -7,37 +7,37 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.diet.simplecaloriecounter.simplecaloriecounter.HomeFragment"
+        android:name="com.diet.simplecaloriecounter.simplecaloriecounter.ui.home.HomeFragment"
         android:label="@string/home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_profile"
-        android:name="com.diet.simplecaloriecounter.simplecaloriecounter.ProfileFragment"
+        android:name="com.diet.simplecaloriecounter.simplecaloriecounter.ui.profile.ProfileFragment"
         android:label="@string/profile"
         tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/nav_goal"
-        android:name="com.diet.simplecaloriecounter.simplecaloriecounter.GoalFragment"
+        android:name="com.diet.simplecaloriecounter.simplecaloriecounter.ui.goal.GoalFragment"
         android:label="@string/goal"
         tools:layout="@layout/fragment_goal" />
 
     <fragment
         android:id="@+id/nav_categories"
-        android:name="com.diet.simplecaloriecounter.simplecaloriecounter.CategoriesFragment"
+        android:name="com.diet.simplecaloriecounter.simplecaloriecounter.ui.categories.CategoriesFragment"
         android:label="@string/categories"
         tools:layout="@layout/fragment_categories" />
 
     <fragment
         android:id="@+id/nav_food"
-        android:name="com.diet.simplecaloriecounter.simplecaloriecounter.FoodFragment"
+        android:name="com.diet.simplecaloriecounter.simplecaloriecounter.ui.food.FoodFragment"
         android:label="@string/food"
         tools:layout="@layout/fragment_food" />
 
     <fragment
         android:id="@+id/nav_statistics"
-        android:name="com.diet.simplecaloriecounter.simplecaloriecounter.StatisticsFragment"
+        android:name="com.diet.simplecaloriecounter.simplecaloriecounter.ui.statistics.StatisticsFragment"
         android:label="Statistics"
         tools:layout="@layout/fragment_statistics"/>
 

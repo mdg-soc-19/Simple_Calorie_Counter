@@ -1,16 +1,16 @@
-package com.diet.simplecaloriecounter.simplecaloriecounter;
+package com.diet.simplecaloriecounter.simplecaloriecounter.ui.goal;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProviders;
 
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -26,10 +26,17 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.diet.simplecaloriecounter.simplecaloriecounter.DBAdapter;
+import com.diet.simplecaloriecounter.simplecaloriecounter.IOnBackPressed;
+import com.diet.simplecaloriecounter.simplecaloriecounter.MainActivity;
+import com.diet.simplecaloriecounter.simplecaloriecounter.R;
+
 import java.util.Calendar;
 
 
-public class GoalFragment extends Fragment implements IOnBackPressed{
+public class GoalFragment extends Fragment implements IOnBackPressed {
+
+    private GoalViewModel mViewModel;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -56,6 +63,10 @@ public class GoalFragment extends Fragment implements IOnBackPressed{
         // Required empty public constructor
     }
 
+    public static GoalFragment newInstance() {
+        return new GoalFragment();
+    }
+
     public static GoalFragment newInstance(String param1, String param2) {
         GoalFragment fragment = new GoalFragment();
         Bundle args = new Bundle();
@@ -66,8 +77,10 @@ public class GoalFragment extends Fragment implements IOnBackPressed{
     }
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        mViewModel = ViewModelProviders.of(this).get(GoalViewModel.class);
 
         /* Set title */
         ((MainActivity)getActivity()).getSupportActionBar().setTitle("Goal");
@@ -907,8 +920,8 @@ public class GoalFragment extends Fragment implements IOnBackPressed{
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater,@Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_goal, container, false);
     }

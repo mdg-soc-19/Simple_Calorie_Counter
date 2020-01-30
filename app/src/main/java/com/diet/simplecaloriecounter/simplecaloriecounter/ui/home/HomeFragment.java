@@ -1,4 +1,4 @@
-package com.diet.simplecaloriecounter.simplecaloriecounter;
+package com.diet.simplecaloriecounter.simplecaloriecounter.ui.home;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -6,10 +6,11 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -27,11 +28,18 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.diet.simplecaloriecounter.simplecaloriecounter.ui.addFoodtoDiary.AddFoodToDiaryFragment;
+import com.diet.simplecaloriecounter.simplecaloriecounter.DBAdapter;
+import com.diet.simplecaloriecounter.simplecaloriecounter.IOnBackPressed;
+import com.diet.simplecaloriecounter.simplecaloriecounter.MainActivity;
+import com.diet.simplecaloriecounter.simplecaloriecounter.R;
+
 import java.util.Calendar;
 
 
-public class HomeFragment extends Fragment implements IOnBackPressed{
+public class HomeFragment extends Fragment implements IOnBackPressed {
 
+    private HomeViewModel mViewModel;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -66,6 +74,10 @@ public class HomeFragment extends Fragment implements IOnBackPressed{
         // Required empty public constructor
     }
 
+    public static HomeFragment newInstance() {
+        return new HomeFragment();
+    }
+
     public static HomeFragment newInstance(String param1, String param2) {
         HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
@@ -86,8 +98,10 @@ public class HomeFragment extends Fragment implements IOnBackPressed{
     }
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        mViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
 
         ((MainActivity)getActivity()).getSupportActionBar().setTitle("Home");
 
@@ -1151,8 +1165,8 @@ public class HomeFragment extends Fragment implements IOnBackPressed{
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater,@Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
 
         return inflater.inflate(R.layout.fragment_home, container, false);
     }

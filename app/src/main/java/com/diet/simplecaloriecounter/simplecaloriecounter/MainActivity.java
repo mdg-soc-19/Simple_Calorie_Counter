@@ -5,29 +5,29 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 import android.widget.Toast;
-import android.view.View;
 
+import com.diet.simplecaloriecounter.simplecaloriecounter.ui.addFoodtoDiary.AddFoodToDiaryFragment;
+import com.diet.simplecaloriecounter.simplecaloriecounter.ui.categories.CategoriesFragment;
+import com.diet.simplecaloriecounter.simplecaloriecounter.ui.food.FoodFragment;
+import com.diet.simplecaloriecounter.simplecaloriecounter.ui.goal.GoalFragment;
+import com.diet.simplecaloriecounter.simplecaloriecounter.ui.home.HomeFragment;
+import com.diet.simplecaloriecounter.simplecaloriecounter.ui.profile.ProfileFragment;
+import com.diet.simplecaloriecounter.simplecaloriecounter.ui.statistics.StatisticsFragment;
 import com.facebook.stetho.Stetho;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
 import okhttp3.OkHttpClient;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity
             public void run() {
                 doubleBackToExitPressedOnce=false;
             }
-        }, 500);
+        }, 1750);
 
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.flContent);
         if (!(fragment instanceof IOnBackPressed) || !((IOnBackPressed) fragment).onBackPressed()) {
@@ -156,7 +156,6 @@ public class MainActivity extends AppCompatActivity
 
         return super.onOptionsItemSelected(item);
     }
-
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -206,6 +205,17 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onFragmentInteraction(Uri uri) {
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        int newOrientation = newConfig.orientation;
+
+        if (newOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+
+        }
     }
 
 }

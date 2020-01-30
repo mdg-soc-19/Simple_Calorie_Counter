@@ -1,13 +1,15 @@
-package com.diet.simplecaloriecounter.simplecaloriecounter;
+package com.diet.simplecaloriecounter.simplecaloriecounter.ui.addFoodtoDiary;
 
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -25,11 +27,20 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.diet.simplecaloriecounter.simplecaloriecounter.DBAdapter;
+import com.diet.simplecaloriecounter.simplecaloriecounter.FoodCursorAdapter;
+import com.diet.simplecaloriecounter.simplecaloriecounter.IOnBackPressed;
+import com.diet.simplecaloriecounter.simplecaloriecounter.MainActivity;
+import com.diet.simplecaloriecounter.simplecaloriecounter.R;
+import com.diet.simplecaloriecounter.simplecaloriecounter.ui.home.HomeFragment;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 
 
-public class AddFoodToDiaryFragment extends Fragment implements IOnBackPressed{
+public class AddFoodToDiaryFragment extends Fragment implements IOnBackPressed {
+
+    private AddFoodToDiaryViewModel mViewModel;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -55,14 +66,15 @@ public class AddFoodToDiaryFragment extends Fragment implements IOnBackPressed{
     private boolean lockPortionSizeByPcs;
     private boolean lockPortionSizeByGram;
 
-
-
     private OnFragmentInteractionListener mListener;
 
     public AddFoodToDiaryFragment() {
         // Required empty public constructor
     }
 
+    public static AddFoodToDiaryFragment newInstance() {
+        return new AddFoodToDiaryFragment();
+    }
 
     public static AddFoodToDiaryFragment newInstance(String param1, String param2) {
         AddFoodToDiaryFragment fragment = new AddFoodToDiaryFragment();
@@ -103,8 +115,10 @@ public class AddFoodToDiaryFragment extends Fragment implements IOnBackPressed{
 
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        mViewModel = ViewModelProviders.of(this).get(AddFoodToDiaryViewModel.class);
 
         ((MainActivity)getActivity()).getSupportActionBar().setTitle("Add food to diary");
 
@@ -117,8 +131,8 @@ public class AddFoodToDiaryFragment extends Fragment implements IOnBackPressed{
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
 
         return inflater.inflate(R.layout.fragment_add_food_to_diary, container, false);
     }
@@ -728,6 +742,5 @@ public class AddFoodToDiaryFragment extends Fragment implements IOnBackPressed{
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
     }
-
 
 }

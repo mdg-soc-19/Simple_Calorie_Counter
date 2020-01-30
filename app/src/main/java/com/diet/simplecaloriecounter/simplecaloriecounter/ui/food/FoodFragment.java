@@ -1,17 +1,16 @@
-package com.diet.simplecaloriecounter.simplecaloriecounter;
+package com.diet.simplecaloriecounter.simplecaloriecounter.ui.food;
 
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProviders;
 
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -27,9 +26,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.diet.simplecaloriecounter.simplecaloriecounter.DBAdapter;
+import com.diet.simplecaloriecounter.simplecaloriecounter.FoodCursorAdapter;
+import com.diet.simplecaloriecounter.simplecaloriecounter.IOnBackPressed;
+import com.diet.simplecaloriecounter.simplecaloriecounter.MainActivity;
+import com.diet.simplecaloriecounter.simplecaloriecounter.R;
 
-public class FoodFragment extends Fragment implements  IOnBackPressed{
 
+public class FoodFragment extends Fragment implements IOnBackPressed {
+
+    private FoodViewModel mViewModel;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -55,6 +61,9 @@ public class FoodFragment extends Fragment implements  IOnBackPressed{
         // Required empty public constructor
     }
 
+    public static FoodFragment newInstance() {
+        return new FoodFragment();
+    }
 
     public static FoodFragment newInstance(String param1, String param2) {
         FoodFragment fragment = new FoodFragment();
@@ -76,9 +85,10 @@ public class FoodFragment extends Fragment implements  IOnBackPressed{
     }
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        mViewModel = ViewModelProviders.of(this).get(FoodViewModel.class);
 
         ((MainActivity)getActivity()).getSupportActionBar().setTitle("Food");
 
@@ -1165,8 +1175,8 @@ public class FoodFragment extends Fragment implements  IOnBackPressed{
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_food, container, false);
     }

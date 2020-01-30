@@ -1,15 +1,18 @@
-package com.diet.simplecaloriecounter.simplecaloriecounter;
+package com.diet.simplecaloriecounter.simplecaloriecounter.ui.profile;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
-import android.view.KeyEvent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -27,15 +30,23 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.diet.simplecaloriecounter.simplecaloriecounter.DBAdapter;
+import com.diet.simplecaloriecounter.simplecaloriecounter.IOnBackPressed;
+import com.diet.simplecaloriecounter.simplecaloriecounter.MainActivity;
+import com.diet.simplecaloriecounter.simplecaloriecounter.R;
+
 import java.util.Calendar;
 
 
-public class ProfileFragment extends Fragment implements IOnBackPressed{
+public class ProfileFragment extends Fragment implements IOnBackPressed {
+
+    private ProfileViewModel mViewModel;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
     private int count;
+
     private String mParam1;
     private String mParam2;
 
@@ -50,6 +61,9 @@ public class ProfileFragment extends Fragment implements IOnBackPressed{
         // Required empty public constructor
     }
 
+    public static ProfileFragment newInstance() {
+        return new ProfileFragment();
+    }
 
     public static ProfileFragment newInstance(String param1, String param2) {
         ProfileFragment fragment = new ProfileFragment();
@@ -71,7 +85,7 @@ public class ProfileFragment extends Fragment implements IOnBackPressed{
     }
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
         ((MainActivity)getActivity()).getSupportActionBar().setTitle("Profile");
@@ -79,7 +93,6 @@ public class ProfileFragment extends Fragment implements IOnBackPressed{
         count = 0;
 
         initializeGetDataFromDbAndDisplay();
-
 
     }
 
@@ -175,7 +188,6 @@ public class ProfileFragment extends Fragment implements IOnBackPressed{
         intUserDobMonth = intUserDobMonth - 1;
         Spinner spinnerDOBMonth = getActivity().findViewById(R.id.spinnerEditProfileDOBMonth);
         spinnerDOBMonth.setSelection(intUserDobMonth);
-
 
 
         int spinnerDOBYearSelectedIndex = 0;
@@ -488,12 +500,14 @@ public class ProfileFragment extends Fragment implements IOnBackPressed{
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
-    }
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        mViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
 
+        View root = inflater.inflate(R.layout.fragment_profile, container, false);
+
+        return root;
+    }
 
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
@@ -533,6 +547,5 @@ public class ProfileFragment extends Fragment implements IOnBackPressed{
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
     }
-
 
 }
